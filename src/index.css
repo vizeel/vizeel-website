@@ -8,27 +8,27 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* AdWink Brand Colors - Vibrant & Modern */
+    /* AdWink Brand Colors - Red/Pink Theme */
     --background: 0 0% 100%;
-    --foreground: 230 15% 15%;
+    --foreground: 220 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 230 15% 15%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 230 15% 15%;
+    --popover-foreground: 220 15% 15%;
 
-    /* Primary - Vibrant Purple */
-    --primary: 267 83% 58%;
+    /* Primary - Vibrant Red/Pink */
+    --primary: 348 83% 58%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 267 90% 70%;
+    --primary-glow: 348 90% 70%;
 
-    /* Secondary - Electric Blue */
-    --secondary: 210 100% 60%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary - Soft Pink */
+    --secondary: 350 100% 88%;
+    --secondary-foreground: 348 83% 58%;
 
-    /* Accent - Bright Orange */
-    --accent: 25 95% 58%;
+    /* Accent - Deep Red */
+    --accent: 348 100% 45%;
     --accent-foreground: 0 0% 100%;
 
     /* Success - Vibrant Green */
@@ -47,8 +47,8 @@ All colors MUST be HSL.
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--success)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
     
     /* Shadows */
     --shadow-vibrant: 0 10px 40px -10px hsl(var(--primary) / 0.3);
