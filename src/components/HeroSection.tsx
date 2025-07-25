@@ -49,7 +49,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Create stunning promotional videos for Instagram, TikTok, YouTube Shorts, and Facebook 
+            Create stunning promotional videos for Instagram, TikTok, YouTube Shorts, and LinkedIn 
             with our AI-powered platform. No editing skills required.
           </p>
 

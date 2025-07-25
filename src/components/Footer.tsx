@@ -4,7 +4,6 @@ import {
   Linkedin, 
   Instagram, 
   Facebook, 
-  Twitter, 
   Youtube, 
   Music, 
   Mail, 
@@ -18,7 +17,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: Instagram, href: "https://instagram.com/adwink", label: "Instagram" },
     { icon: Facebook, href: "https://facebook.com/adwink", label: "Facebook" },
-    { icon: Twitter, href: "https://twitter.com/adwink", label: "Twitter" },
     { icon: Music, href: "https://tiktok.com/@adwink", label: "TikTok" },
     { icon: Youtube, href: "https://youtube.com/@adwink", label: "YouTube" },
     { icon: Linkedin, href: "https://linkedin.com/company/adwink", label: "LinkedIn" }

@@ -20,7 +20,7 @@ const HowItWorks = () => {
     {
       icon: Share2,
       title: "1-Click Publishing",
-      description: "Publish directly to Instagram, TikTok, YouTube Shorts, Facebook, and Twitter with just one click.",
+      description: "Publish directly to Instagram, TikTok, YouTube Shorts, Facebook, and LinkedIn with just one click.",
       color: "text-accent"
     }
   ];
@@ -110,7 +110,7 @@ const HowItWorks = () => {
             and publishes your videos instantly across all platforms.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
-            {["Instagram Reels", "TikTok", "YouTube Shorts", "Facebook", "Twitter"].map((platform) => (
+            {["Instagram Reels", "TikTok", "YouTube Shorts", "Facebook", "LinkedIn"].map((platform) => (
               <Badge key={platform} variant="secondary" className="bg-white/20 text-white border-white/30">
                 {platform}
               </Badge>

@@ -31,7 +31,7 @@ const FAQ = () => {
     },
     {
       question: "How does the 1-click publishing work?",
-      answer: "Simply connect your social media accounts once (Instagram, TikTok, YouTube, Facebook, Twitter), and our platform will handle the rest. After you approve a video, choose your platforms and hit publish - we'll automatically format and post to each platform with optimal settings."
+      answer: "Simply connect your social media accounts once (Instagram, TikTok, YouTube, Facebook, LinkedIn), and our platform will handle the rest. After you approve a video, choose your platforms and hit publish - we'll automatically format and post to each platform with optimal settings."
     },
     {
       question: "Can I use my own branding and assets?",
@@ -43,7 +43,7 @@ const FAQ = () => {
     },
     {
       question: "Do you offer refunds?",
-      answer: "We offer a 30-day money-back guarantee. If you're not completely satisfied with our service, contact us within 30 days for a full refund. We're confident you'll love the videos our AI creates for your brand."
+      answer: "We do not issue refunds for our video generation services. All sales are final. We recommend taking advantage of our free trial or basic tier to test our platform before upgrading to ensure our service meets your needs."
     },
     {
       question: "Is there a limit to how many videos I can generate?",
