@@ -230,3 +230,26 @@ All colors MUST be HSL.
   margin: 14px auto 0; border-radius: 999px;
   background: linear-gradient(90deg, #E12C50, #7C4288);
 }
+
+/* Reduced card height styling */
+#how-it-works .how-card {
+  padding: 14px 14px;          /* was ~18px */
+  border-radius: 14px;
+}
+#how-it-works .how-card .icon {
+  width: 40px; height: 40px;   /* was ~44px */
+  margin: 4px auto;
+}
+#how-it-works .how-card .title {
+  font-size: 18px;             /* was ~20px */
+  line-height: 1.25;
+  margin: 4px 0 2px;
+}
+#how-it-works .how-card .sub {
+  font-size: 13px;             /* tighten */
+  margin: 0;
+}
+#how-it-works .steps { gap: 14px; }  /* slight reduction */
+@media (min-width:1024px){
+  #how-it-works { padding-top:24px; padding-bottom:24px; }
+}

@@ -26,7 +26,7 @@ const NewHowItWorks = () => {
     },
     {
       icon: Link,
-      title: "Short-form videos are generated throughout the month",
+      title: "Short-form videos are auto generated",
       description: "adding new media is optional"
     }
   ];
