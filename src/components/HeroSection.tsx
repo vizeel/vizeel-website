@@ -48,8 +48,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="subhead text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-            Create stunning promotional videos for Instagram, TikTok, YouTube Shorts, and LinkedIn 
-            with our AI-powered platform. No editing skills required.
+            Reach new customers with an AI-powered system that generates on-brand short-form videos, guided by a strategic media plan.
           </p>
 
           {/* Lead Capture Form */}
@@ -102,7 +101,7 @@ const HeroSection = () => {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-success rounded-full animate-bounce-gentle" />
-              <span>1-Click Publishing</span>
+              <span>Auto-formatted</span>
             </div>
           </div>
         </div>
