@@ -154,3 +154,35 @@ All colors MUST be HSL.
   background: linear-gradient(to bottom, rgba(36,39,47,0.20), rgba(36,39,47,0.18)),
               var(--hero-image, transparent);
 }
+
+/* Home hero text readability - white text on dark hero only */
+#home-hero h1,
+#home-hero .h1 {
+  color: #FFFFFF !important;         /* white headline on dark hero */
+  font-weight: 800;                   /* keep current weight */
+}
+
+#home-hero h1 .accent,
+#home-hero .h1 .accent {
+  color: #E12C50 !important;          /* brand pink accent */
+}
+
+#home-hero .subhead,
+#home-hero p.subhead {
+  color: rgba(255,255,255,0.88) !important;  /* readable white subhead */
+}
+
+/* Guard against any global white-text overrides breaking inheritance */
+#home-hero .text-white,
+#home-hero *[style*="color:#fff"],
+#home-hero *[style*="color: #fff"] {
+  color: inherit !important;
+}
+
+/* Optional: if parts of the image are still too light, nudge the overlay slightly darker.
+   If not needed, skip this rule. */
+#home-hero .overlay {
+  background:
+    linear-gradient(180deg, rgba(36,39,47,0.38) 0%, rgba(36,39,47,0.32) 100%),
+    var(--hero-image, transparent) !important;
+}
