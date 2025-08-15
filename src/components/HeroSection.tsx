@@ -21,10 +21,10 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className="hero relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Background Image with Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+        className="overlay absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       
@@ -38,16 +38,16 @@ const HeroSection = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-foreground">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Turn Ideas into{" "}
-            <span className="bg-gradient-accent bg-clip-text text-transparent">
+            <span className="accent">
               Scroll-Stopping Videos
             </span>{" "}
             in Seconds
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl mb-12 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="subhead text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
             Create stunning promotional videos for Instagram, TikTok, YouTube Shorts, and LinkedIn 
             with our AI-powered platform. No editing skills required.
           </p>
