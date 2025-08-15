@@ -1,8 +1,11 @@
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
-import HowItWorks from "@/components/HowItWorks";
-import VideoGallery from "@/components/VideoGallery";
-import Testimonials from "@/components/Testimonials";
+import WhyVizeel from "@/components/WhyVizeel";
+import WhoItsFor from "@/components/WhoItsFor";
+import Features from "@/components/Features";
+import NewHowItWorks from "@/components/NewHowItWorks";
+import WhatYouGet from "@/components/WhatYouGet";
+import LearnMore from "@/components/LearnMore";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
@@ -11,9 +14,12 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <HowItWorks />
-      <VideoGallery />
-      <Testimonials />
+      <WhyVizeel />
+      <WhoItsFor />
+      <Features />
+      <NewHowItWorks />
+      <WhatYouGet />
+      <LearnMore />
       <FAQ />
       <Footer />
     </div>
