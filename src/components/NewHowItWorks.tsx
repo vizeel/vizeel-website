@@ -21,12 +21,12 @@ const NewHowItWorks = () => {
     },
     {
       icon: CheckCircle,
-      title: "Approve the calendar",
+      title: "Review the content calendar",
       description: "enable auto-posting if you want"
     },
     {
       icon: Link,
-      title: "Receive ongoing outputs",
+      title: "Short-form videos are generated throughout the month",
       description: "adding new media is optional"
     }
   ];
