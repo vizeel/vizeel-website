@@ -54,21 +54,21 @@ const Footer = () => {
                 <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                  AdWink
+                <span className="text-2xl font-bold bg-gradient-accent bg-clip-text text-transparent">
+                  Vizeel
                 </span>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                AI-powered platform that transforms your ideas into scroll-stopping videos 
-                for all social media platforms in seconds.
+                Turn long videos into publishable short clips—automatically. Vizeel drafts highlights, 
+                titles, captions, and transcripts in your brand style.
               </p>
               
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm">
                   <Mail className="w-4 h-4 text-primary" />
-                  <a href="mailto:hello@adwink.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                    hello@adwink.com
+                  <a href="mailto:support@vizeel.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                    support@vizeel.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
@@ -154,7 +154,7 @@ const Footer = () => {
         <div className="py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} AdWink. All rights reserved.
+              © {new Date().getFullYear()} Vizeel. All rights reserved.
             </div>
             
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
