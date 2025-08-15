@@ -32,7 +32,7 @@ const NewHowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section id="how-it-works" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 text-primary border-primary/20">
@@ -48,22 +48,25 @@ const NewHowItWorks = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
           {steps.map((step, index) => (
-            <Card key={index} className="hover:shadow-vibrant transition-all duration-300 border-0 bg-card relative">
+            <Card key={index} className="how-card hover:shadow-vibrant transition-all duration-300 border-0 bg-card relative">
               <CardContent className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary text-white mb-4">
+                <div className="icon">
                   <step.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold mb-3 text-foreground">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
                 
                 {/* Step Number */}
-                <div className="absolute top-3 right-3 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold">
+                <div className="step-badge absolute top-3 right-3 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold">
                   {index + 1}
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
+        
+        {/* Progress bar */}
+        <div className="how-progress" aria-hidden="true"></div>
       </div>
     </section>
   );

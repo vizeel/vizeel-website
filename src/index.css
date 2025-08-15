@@ -186,3 +186,47 @@ All colors MUST be HSL.
     linear-gradient(180deg, rgba(36,39,47,0.38) 0%, rgba(36,39,47,0.32) 100%),
     var(--hero-image, transparent) !important;
 }
+
+/* How It Works Section Styling */
+#how-it-works {
+  border-radius: 24px;
+  padding: 28px;
+  /* Left→right soft background to imply progression */
+  background: linear-gradient(90deg, rgba(225,44,80,0.08) 0%, rgba(124,66,136,0.08) 100%);
+}
+
+/* Hide small number badges (top-right) */
+#how-it-works .step-badge,
+#how-it-works [class*="badge"],
+#how-it-works [class*="step-number"] { display: none !important; }
+
+/* Card styling + subtle tints; keep dark text for contrast */
+#how-it-works .how-card {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 16px;
+  padding: 18px 16px;
+  color: #24272F;
+  box-shadow: 0 1px 2px rgba(0,0,0,.03);
+}
+#how-it-works .how-card:nth-child(1){ background: linear-gradient(180deg, rgba(225,44,80,0.06), #fff 70%); }
+#how-it-works .how-card:nth-child(2){ background: linear-gradient(180deg, rgba(225,44,80,0.04), #fff 70%); }
+#how-it-works .how-card:nth-child(3){ background: linear-gradient(180deg, rgba(196,101,140,0.05), #fff 70%); }
+#how-it-works .how-card:nth-child(4){ background: linear-gradient(180deg, rgba(149,82,150,0.05), #fff 70%); }
+#how-it-works .how-card:nth-child(5){ background: linear-gradient(180deg, rgba(124,66,136,0.06), #fff 70%); }
+
+/* Optional: give the pictogram icon a pink→purple fill */
+#how-it-works .how-card .icon {
+  background: linear-gradient(135deg, #E12C50, #7C4288);
+  color: #fff;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin: 6px auto 4px;
+}
+
+/* Slim progress bar beneath the row */
+#how-it-works .how-progress {
+  height: 6px; max-width: 420px;
+  margin: 14px auto 0; border-radius: 999px;
+  background: linear-gradient(90deg, #E12C50, #7C4288);
+}
