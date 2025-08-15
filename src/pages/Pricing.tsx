@@ -263,7 +263,7 @@ const Pricing = () => {
               </div>
               <div className="text-center mt-8">
                 <p className="text-muted-foreground">
-                  → <a href="/faq" className="text-accent hover:underline">View more FAQs</a>
+                  Questions? <a href="/faq" className="text-accent hover:underline">See all FAQs →</a>
                 </p>
               </div>
             </div>

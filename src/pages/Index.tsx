@@ -6,7 +6,6 @@ import Features from "@/components/Features";
 import NewHowItWorks from "@/components/NewHowItWorks";
 import WhatYouGet from "@/components/WhatYouGet";
 import LearnMore from "@/components/LearnMore";
-import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -20,7 +19,6 @@ const Index = () => {
       <NewHowItWorks />
       <WhatYouGet />
       <LearnMore />
-      <FAQ />
       <Footer />
     </div>
   );
