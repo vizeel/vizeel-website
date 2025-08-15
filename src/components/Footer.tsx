@@ -23,11 +23,9 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" }
+    { label: "How It Works", href: "/product" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "FAQ", href: "/faq" }
   ];
 
   const legalLinks = [
@@ -47,7 +45,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid lg:grid-cols-4 gap-12">
+          <div className="grid lg:grid-cols-3 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
@@ -62,22 +60,6 @@ const Footer = () => {
                 Turn long videos into publishable short clips—automatically. Vizeel drafts highlights, 
                 titles, captions, and transcripts in your brand style.
               </p>
-              
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 text-sm">
-                  <Mail className="w-4 h-4 text-primary" />
-                  <a href="mailto:support@vizeel.com" className="text-muted-foreground hover:text-foreground transition-colors">
-                    support@vizeel.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                  <Phone className="w-4 h-4 text-primary" />
-                  <a href="tel:+1-555-0123" className="text-muted-foreground hover:text-foreground transition-colors">
-                    +1 (555) 012-3456
-                  </a>
-                </div>
-              </div>
             </div>
 
             {/* Quick Links */}
@@ -89,6 +71,7 @@ const Footer = () => {
                     <a 
                       href={link.href}
                       className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                      aria-label={`Navigate to ${link.label} page`}
                     >
                       {link.label}
                     </a>
@@ -97,27 +80,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Social Media */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-6">Follow Us</h4>
-              <div className="grid grid-cols-3 gap-3 mb-6">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 bg-muted hover:bg-primary hover:text-primary-foreground rounded-lg transition-all duration-300 group"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                  </a>
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Stay updated with the latest features and tips for creating amazing videos.
-              </p>
-            </div>
 
             {/* Trust Badges */}
             <div>
