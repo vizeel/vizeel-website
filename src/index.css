@@ -150,13 +150,7 @@ All colors MUST be HSL.
   color: inherit !important;
 }
 
-/* Optional: if parts of the image are still too light, nudge the overlay slightly darker.
-   If not needed, skip this rule. */
-#home-hero .overlay {
-  background:
-    linear-gradient(180deg, rgba(36,39,47,0.38) 0%, rgba(36,39,47,0.32) 100%),
-    var(--hero-image, transparent) !important;
-}
+/* Removed overlay CSS to prevent duplication */
 
 /* How It Works Section Styling */
 #how-it-works {

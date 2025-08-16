@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Play, Sparkles } from "lucide-react";
 import { useState } from "react";
-const heroImage = "/lovable-uploads/a493d6b6-6f2d-4ee5-99b2-2e5d4ae504d9.png";
+import heroImage from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   const [email, setEmail] = useState("");
