@@ -40,8 +40,8 @@ const WhoItsFor = () => {
           {audiences.map((audience, index) => (
             <Card key={index} className="hover:shadow-vibrant transition-all duration-300 border-0 bg-card">
               <CardContent className="p-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-primary text-white mb-6">
-                  <audience.icon className="w-8 h-8" />
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-primary text-white flex-shrink-0">
+                  <audience.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-foreground">{audience.title}</h3>
                 <p className="text-muted-foreground">{audience.description}</p>
