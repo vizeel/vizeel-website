@@ -21,12 +21,13 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home-hero" className="hero relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
-      {/* Background Image with Overlay */}
-      <div 
-        className="overlay absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
+    <section 
+      id="home-hero" 
+      className="hero relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ backgroundImage: `url(${heroImage})` }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/50" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
