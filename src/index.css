@@ -245,3 +245,6 @@ All colors MUST be HSL.
 
 /* Maintain readability on a light surface */
 #who-for, #who-for * { color: #24272F; }
+
+/* Exception: Keep icon containers white */
+#who-for .bg-gradient-primary { color: #FFFFFF !important; }
