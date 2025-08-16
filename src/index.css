@@ -243,8 +243,18 @@ All colors MUST be HSL.
   mask: radial-gradient(80% 80% at 50% 50%, #000 60%, transparent 100%);
 }
 
-/* Maintain readability on a light surface */
-#who-for, #who-for * { color: #24272F; }
+/* Maintain readability on a light surface - but preserve gradients */
+#who-for h2, #who-for h3, #who-for p, #who-for span:not(.bg-clip-text) { 
+  color: #24272F !important; 
+}
 
-/* Exception: Keep icon containers white */
-#who-for .bg-gradient-primary { color: #FFFFFF !important; }
+/* Keep gradient text effects working */
+#who-for .bg-clip-text.text-transparent { 
+  color: transparent !important; 
+}
+
+/* Keep gradient icon backgrounds working */
+#who-for .bg-gradient-primary { 
+  background: var(--gradient-primary) !important;
+  color: #FFFFFF !important; 
+}
