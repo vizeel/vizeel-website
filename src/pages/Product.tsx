@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Helmet } from "react-helmet-async";
 import {
-  Users,
   Video,
   Calendar,
   Settings,
@@ -15,65 +14,62 @@ import {
   Smartphone,
   Shield,
   CheckCircle,
+  UserPlus,
+  Link,
+  Palette,
 } from "lucide-react";
 
 const Product = () => {
   const features = [
     {
+      icon: Calendar,
+      title: "AI-generated media plan, customized to your business, includes a content calendar.",
+      description: "Research-driven plan that aligns with your site, services, and audience."
+    },
+    {
       icon: Video,
-      title: "Branded templates for titles, captions, and lower-thirds",
-      description: "Consistent branding across all your video content"
+      title: "'Ready to Post' videos that use branded templates for titles, captions, and lower-thirds",
+      description: "On-brand clips, no editing required."
     },
     {
       icon: Monitor,
-      title: "Multi-format outputs (vertical shorts, square posts, transcript/notes)",
-      description: "Perfect sizing for every platform"
-    },
-    {
-      icon: Calendar,
-      title: "Calendar approvals and optional auto-posting",
-      description: "Full control over your content schedule"
+      title: "Multi-format outputs in one pass (vertical shorts, square posts, transcript/notes)",
+      description: "Platform-ready sizes and assets."
     },
     {
       icon: Settings,
-      title: "Workspace with saved brand presets",
-      description: "Streamlined workflow with your brand settings"
+      title: "Workspace with saved brand presets and option to add new media",
+      description: "Keep logos, colors, fonts, and cards in one place."
     }
   ];
 
   const howItWorksSteps = [
-    "Sign up — Create your account at app.vizeel.com.",
-    "Connect socials — Link Instagram, TikTok, YouTube, and/or LinkedIn.",
-    "Add your Brand Kit (one-time) — Brand guidelines, style guide, intro/outro cards.",
-    "We generate your first Media Plan — free — Review your calendar of suggested clips.",
-    "Activate Media Plan — Turn on the plan you like.",
-    "Pick a tier — Choose Entry, Sweet Spot (recommended), or Power User to fit your cadence.",
-    "Add media (optional) — Drop images/video you want used in brand videos.",
-    "Enable auto-posting (optional) — Approve the calendar and we'll post per schedule.",
-    "Focus on your business — We amplify your brand content in the background.",
-    "Monthly outputs — no prompts needed — Fresh clips arrive monthly; adding new media is optional."
+    "Create your workspace — Sign up and set your Brand Kit once for consistent styling.",
+    "Connect accounts — Link social channels to enable publishing and scheduling.",
+    "Get your free Media Plan — Review strategy and activate when you're ready.",
+    "Pick a tier & add media (optional) — Entry, Sweet Spot, or Power User; upload brand media anytime.",
+    "Ongoing delivery — On-brand short videos generated monthly; opt into auto-posting."
   ];
 
   const outputs = [
-    "Short clips in platform-ready sizes (9:16, 1:1)",
-    "Transcript and show notes (downloadable)",
-    "Title/caption variants for A/B testing",
-    "Brand presets saved to your workspace"
+    "Short clips in platform-ready sizes (9:16, 1:1).",
+    "Strategic media plan with research analysis results and a content calendar",
+    "Brand presets saved to your workspace."
   ];
 
   const userBenefits = [
-    "Done-for-you short videos from your reviews, site, and services",
-    "Vertical-first clips (8s/15s/30s) tuned for social",
-    "Consistent monthly outputs—set once, we handle the rest",
-    "Simple email support included"
+    "Done-for-you short videos from your reviews, website, and brand media.",
+    "Vertical-first clips tuned for social.",
+    "Consistent outputs—set once, we handle the rest.",
+    "Simple email support included."
   ];
 
   const integrations = [
-    "Instagram",
+    "Instagram Reels",
     "TikTok", 
     "YouTube Shorts",
     "LinkedIn",
-    "MP4 export for anywhere else"
+    "MP4 export"
   ];
 
   const structuredData = {
@@ -93,10 +89,10 @@ const Product = () => {
     <>
       <Navigation />
       <Helmet>
-        <title>Product / How it Works – Vizeel</title>
+        <title>Product — Vizeel</title>
         <meta 
           name="description" 
-          content="Sign up, connect socials, add your brand kit once, and Vizeel auto-generates a media plan and monthly short-form outputs—no prompts needed." 
+          content="Vizeel researches, plans, and generates short-form brand videos from your site, services, and reviews. No prompts required." 
         />
         <meta 
           name="keywords" 
@@ -106,16 +102,16 @@ const Product = () => {
         <meta name="robots" content="index,follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Product / How it Works – Vizeel" />
-        <meta property="og:description" content="Sign up, connect socials, add your brand kit once, and Vizeel auto-generates a media plan and monthly short-form outputs—no prompts needed." />
+        <meta property="og:title" content="Product — Vizeel" />
+        <meta property="og:description" content="Vizeel researches, plans, and generates short-form brand videos from your site, services, and reviews. No prompts required." />
         <meta property="og:url" content="https://vizeel.com/product" />
         <meta property="og:image" content="/og/vizeel-product.png" />
         <meta property="og:type" content="website" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Product / How it Works – Vizeel" />
-        <meta name="twitter:description" content="Sign up, connect socials, add your brand kit once, and Vizeel auto-generates a media plan and monthly short-form outputs—no prompts needed." />
+        <meta name="twitter:title" content="Product — Vizeel" />
+        <meta name="twitter:description" content="Vizeel researches, plans, and generates short-form brand videos from your site, services, and reviews. No prompts required." />
         <meta name="twitter:image" content="/og/vizeel-product.png" />
         
         <script type="application/ld+json">
@@ -129,21 +125,27 @@ const Product = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-                Product / How it Works
+                Product Tour
               </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Turn long videos into publishable short clips—automatically. Vizeel drafts highlights, 
-                titles, captions, and transcripts in your brand style. You approve on a calendar, and 
-                we auto-post per schedule.
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+                Vizeel researches, plans, and generates short videos for your brand. Using an AI-powered media plan and content planning process, Vizeel efficiently delivers a steady stream of content that fits with your brand and reaches new customers.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button variant="accent" size="lg" asChild>
+                  <a href="/signup">Get Started</a>
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <a href="/pricing">See Pricing</a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Overview Section */}
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Features</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Overview</h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {features.map((feature, index) => (
                 <Card key={index} className="border-border bg-card">
@@ -171,14 +173,16 @@ const Product = () => {
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold text-center mb-12 text-foreground">How it works</h2>
             <div className="max-w-4xl mx-auto">
-              <div className="space-y-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
                 {howItWorksSteps.map((step, index) => (
-                  <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-muted/30">
-                    <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                      {index + 1}
-                    </div>
-                    <p className="text-foreground flex-1">{step}</p>
-                  </div>
+                  <Card key={index} className="border-border bg-card text-center">
+                    <CardContent className="p-6">
+                      <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm mx-auto mb-4">
+                        {index + 1}
+                      </div>
+                      <p className="text-foreground text-sm">{step}</p>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -207,7 +211,7 @@ const Product = () => {
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Outputs (formats)</h2>
             <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-1 gap-6">
                 {outputs.map((output, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <FileText className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
@@ -224,7 +228,10 @@ const Product = () => {
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Integrations</h2>
             <div className="max-w-4xl mx-auto">
-              <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <p className="text-center text-muted-foreground mb-6">
+                Instagram, TikTok, YouTube Shorts; MP4 export for anywhere else. Auto-posting requires connected accounts and your approval.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
                 {integrations.map((integration, index) => (
                   <Badge key={index} variant="outline" className="px-4 py-2 text-sm">
                     <Share2 className="w-4 h-4 mr-2" />
@@ -232,9 +239,6 @@ const Product = () => {
                   </Badge>
                 ))}
               </div>
-              <p className="text-center text-muted-foreground">
-                Auto-posting requires connected accounts and your approval.
-              </p>
             </div>
           </div>
         </section>
@@ -263,15 +267,13 @@ const Product = () => {
         <section className="py-16 bg-accent/5">
           <div className="container mx-auto px-6 text-center">
             <div className="max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-foreground">Ready to get started?</h2>
+              <h2 className="text-3xl font-bold mb-8 text-foreground">Get started</h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="accent" size="lg" asChild>
-                  <a href="/contact">Join the waitlist</a>
+                  <a href="/signup">Sign up</a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="https://app.vizeel.com" target="_blank" rel="noopener noreferrer">
-                    Create your account
-                  </a>
+                  <a href="/contact">Contact</a>
                 </Button>
               </div>
             </div>
