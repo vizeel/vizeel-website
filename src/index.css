@@ -124,36 +124,7 @@ All colors MUST be HSL.
   }
 }
 
-/* Hero contrast fixes - Home page only */
-.hero h1,
-.hero .h1 {
-  color: #24272F !important; /* brand black */
-  font-weight: 800;          /* match current look */
-}
-
-.hero h1 .accent,
-.hero .h1 .accent {
-  color: #E12C50 !important; /* brand pink for highlighted words */
-}
-
-.hero .subhead,
-.hero p.subhead {
-  color: #475467 !important; /* slate body copy used in current design */
-}
-
-/* Protect hero from global "white-on-light" sweeps */
-.hero .text-white,
-.hero *[style*="color: #fff"],
-.hero *[style*="color:#ffffff"] {
-  color: inherit !important;
-}
-
-/* Optional: ensure the light hero image always has enough contrast */
-.hero .overlay {
-  /* keep your current overlay; just ensure a minimum darkness */
-  background: linear-gradient(to bottom, rgba(36,39,47,0.20), rgba(36,39,47,0.18)),
-              var(--hero-image, transparent);
-}
+/* Hero contrast fixes - removed conflicting styles */
 
 /* Home hero text readability - white text on dark hero only */
 #home-hero h1,
