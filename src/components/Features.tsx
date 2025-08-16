@@ -31,7 +31,7 @@ const Features = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 text-primary border-primary/20">
-            Features
+            What You Get
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             Powerful{" "}
