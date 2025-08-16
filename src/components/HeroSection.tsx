@@ -23,7 +23,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home-hero" 
-      className="hero relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="hero relative min-h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       {/* Dark overlay for readability */}
