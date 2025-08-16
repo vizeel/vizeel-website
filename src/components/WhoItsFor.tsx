@@ -29,10 +29,7 @@ const WhoItsFor = () => {
             Who It's For
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Who it's{" "}
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              for
-            </span>
+            Who it's for
           </h2>
         </div>
 
