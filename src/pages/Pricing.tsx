@@ -27,8 +27,7 @@ const Pricing = () => {
       icon: Zap,
       features: [
         "Everything in Entry",
-        "+ 4 × 15s videos / month",
-        "Calendar & approvals"
+        "+ 4 × 15s videos / month"
       ],
       popular: true
     },
