@@ -12,7 +12,7 @@ const FAQ = () => {
         "name": "How long does it take to generate a video?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you approve the calendar, short-form videos begin generating and scheduling throughout the month according to your plan. Most customers see initial clips within 1–2 business days."
+          "text": "After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you activate your media plan by subscribing to a paid plan, short-form videos begin generating throughout the month according to your plan. Most customers see initial clips within 1–2 business days."
         }
       },
       {
@@ -21,14 +21,6 @@ const FAQ = () => {
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Vertical-first MP4 (9:16, 1080×1920) is standard. We can also provide square MP4 (1:1, 1080×1080). Transcripts/notes are included; captions (SRT/VTT) are available on eligible plans."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I review the video before publishing?", 
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. You approve content on the calendar before anything goes live. You can also enable auto-posting so approved items publish automatically."
         }
       },
       {
@@ -146,7 +138,7 @@ const FAQ = () => {
                   How long does it take to generate a video?
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you approve the calendar, short-form videos begin generating and scheduling throughout the month according to your plan. Most customers see initial clips within 1–2 business days.
+                  After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you activate your media plan by subscribing to a paid plan, short-form videos begin generating throughout the month according to your plan. Most customers see initial clips within 1–2 business days.
                 </p>
               </div>
 
@@ -156,15 +148,6 @@ const FAQ = () => {
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Vertical-first MP4 (9:16, 1080×1920) is standard. We can also provide square MP4 (1:1, 1080×1080). Transcripts/notes are included; captions (SRT/VTT) are available on eligible plans.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
-                  Can I review the video before publishing?
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Yes. You approve content on the calendar before anything goes live. You can also enable auto-posting so approved items publish automatically.
                 </p>
               </div>
 
