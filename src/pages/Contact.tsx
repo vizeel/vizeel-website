@@ -104,7 +104,7 @@ const Contact = () => {
                 We'd love to hear from you
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Use the form below or email support@vizeel.com. Typical response time: within 1 business day.
+                Use the form below or email support@vizeel.com.
               </p>
             </div>
           </div>
@@ -217,46 +217,6 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              {/* Social Media */}
-              <Card className="border-border bg-card">
-                <CardHeader>
-                  <CardTitle>Other ways to reach us</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {socialLinks.map((social, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
-                          <social.icon className="w-5 h-5 text-accent" />
-                        </div>
-                        <div>
-                          <p className="font-medium text-foreground">{social.label}</p>
-                          <p className="text-sm text-muted-foreground">{social.handle}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Mailing Address */}
-              <Card className="border-border bg-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-accent" />
-                    Mailing address
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <address className="text-foreground not-italic">
-                    Vizeel Inc.<br />
-                    123 Business District<br />
-                    Suite 456<br />
-                    Austin, TX 78701<br />
-                    United States
-                  </address>
-                </CardContent>
-              </Card>
             </section>
           </div>
         </div>
