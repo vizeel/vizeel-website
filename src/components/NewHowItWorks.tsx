@@ -7,12 +7,12 @@ const NewHowItWorks = () => {
     {
       icon: UserPlus,
       title: "Sign up at app.vizeel.com",
-      description: "and connect your socials"
+      description: "connect your brands' social accounts to kick off the research and planning process"
     },
     {
       icon: Palette,
       title: "Add your Brand Kit once",
-      description: "(style guide, intro/outro cards)"
+      description: "style guide with brand color and preferences\noptional intro/outro cards"
     },
     {
       icon: Calendar,
