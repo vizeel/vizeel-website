@@ -62,7 +62,7 @@ const Navigation = () => {
             </a>
           </Button>
           <Button variant="accent" size="sm" asChild>
-            <Link to="/contact">Get Started</Link>
+            <Link to="/contact">Join waitlist</Link>
           </Button>
         </div>
 
@@ -106,7 +106,7 @@ const Navigation = () => {
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" className="w-full" asChild>
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>Get Started</Link>
+                  <Link to="/contact" onClick={() => setIsOpen(false)}>Join waitlist</Link>
                 </Button>
               </div>
             </div>

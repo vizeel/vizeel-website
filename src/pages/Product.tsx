@@ -132,7 +132,7 @@ const Product = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="accent" size="lg" asChild>
-                  <a href="/signup">Get Started</a>
+                  <a href="/signup">Join waitlist</a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href="/pricing">See Pricing</a>
@@ -267,7 +267,7 @@ const Product = () => {
         <section className="py-16 bg-accent/5">
           <div className="container mx-auto px-6 text-center">
             <div className="max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-foreground">Get started</h2>
+              <h2 className="text-3xl font-bold mb-8 text-foreground">Join waitlist</h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="accent" size="lg" asChild>
                   <a href="/signup">Sign up</a>

@@ -200,7 +200,7 @@ const Pricing = () => {
                       className="w-full"
                       asChild
                     >
-                      <a href="/contact">Get Started</a>
+                      <a href="/contact">Join waitlist</a>
                     </Button>
                   </CardContent>
                 </Card>
