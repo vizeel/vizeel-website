@@ -16,10 +16,10 @@ const WhyVizeel = () => {
           </h2>
           <div className="text-xl text-muted-foreground max-w-3xl mx-auto space-y-4">
             <p>
-              Posting consistently is hard: planning, editing, and captioning brand posts takes time.
+              Posting consistently is hard and planning content, editing videos, and captioning brand posts take extra time.
             </p>
             <p>
-              Vizeel researches, plans, and generates short videos for you, then auto-posts after your approval.
+              Vizeel researches, plans, and generates short videos for your brand; subscribers receive a steady pipeline of on-brand, engaging, 'ready to post' videos.
             </p>
           </div>
         </div>
