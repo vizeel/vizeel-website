@@ -17,7 +17,7 @@ const NewHowItWorks = () => {
     {
       icon: Calendar,
       title: "We generate your first Media Plan",
-      description: "for free , including a Research summary and analysis of your brand"
+      description: "including a brand and audience analysis  for free; subscribe to a paid plan to activate your Media Plan"
     },
     {
       icon: CheckCircle,

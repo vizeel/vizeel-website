@@ -57,7 +57,7 @@ const Footer = () => {
                 </span>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Reach new customers with engaging, short-form, on brand, videos generated with your brand images and reviews. Vizeel's AI powered videos are sequenced intentionally and reflect your brand preferences and style; each video is auto-formatted your social accounts .
+                Reach new customers with engaging, on-brand, videos generated with your brand images and reviews. Vizeel's AI enhanced videos, that reflect your brand style and target audience, are delivered ready to post.
               </p>
             </div>
 
