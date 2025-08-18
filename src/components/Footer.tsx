@@ -57,8 +57,7 @@ const Footer = () => {
                 </span>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Turn long videos into publishable short clips—automatically. Vizeel drafts highlights, 
-                titles, captions, and transcripts in your brand style.
+                Reach new customers with engaging, short-form, on brand, videos generated with your brand images and reviews. Vizeel's AI powered videos are sequenced intentionally and reflect your brand preferences and style; each video is auto-formatted your social accounts .
               </p>
             </div>
 
