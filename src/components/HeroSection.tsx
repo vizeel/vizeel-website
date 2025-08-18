@@ -79,14 +79,7 @@ const HeroSection = () => {
               className="text-lg px-8 py-6 h-auto"
             >
               <Play className="w-5 h-5 mr-2" />
-              Submit
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="text-lg px-8 py-6 h-auto"
-            >
-              Watch Demo
+              Join waitlist
             </Button>
           </div>
 
