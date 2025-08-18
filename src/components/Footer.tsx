@@ -119,7 +119,6 @@ const Footer = () => {
             </div>
             
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <span>Made with ❤️ for creators</span>
               <Badge variant="outline" className="text-xs">
                 Powered by AI
               </Badge>
