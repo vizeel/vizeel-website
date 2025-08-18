@@ -22,7 +22,7 @@ const NewHowItWorks = () => {
     {
       icon: CheckCircle,
       title: "Review the content calendar",
-      description: "enable auto-posting if you want"
+      description: "enable auto-posting or preview summaries of scripts that will be used in upcoming videos"
     },
     {
       icon: Link,

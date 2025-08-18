@@ -17,7 +17,7 @@ const WhoItsFor = () => {
     {
       icon: Users,
       title: "Agencies managing multiple clients",
-      description: "shared calendars and approvals"
+      description: "view content calendars and brand kits for multiple domains"
     }
   ];
 
