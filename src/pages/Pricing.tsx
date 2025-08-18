@@ -48,7 +48,7 @@ const Pricing = () => {
   const planDetails = [
     "Research-driven monthly content calendar",
     "AI-generated short videos",
-    "Approval flow",
+    "Brand style preferences and cards",
     "Optional auto-posting once accounts are connected"
   ];
 
@@ -59,7 +59,7 @@ const Pricing = () => {
     },
     {
       question: "Can I change plans later?",
-      answer: "Yes—upgrade or downgrade anytime. Changes take effect in the next billing cycle."
+      answer: "Yes, upgrade or downgrade anytime. Changes take effect in the next billing cycle."
     }
   ];
 
@@ -274,9 +274,9 @@ const Pricing = () => {
         <section className="py-16 bg-accent/5">
           <div className="container mx-auto px-6 text-center">
             <div className="max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-foreground">Ready to start?</h2>
+              <h2 className="text-3xl font-bold mb-8 text-foreground">Interested in early access?</h2>
               <Button variant="accent" size="lg" asChild>
-                <a href="/contact">Create your account</a>
+                <a href="/contact">Join waitlist</a>
               </Button>
             </div>
           </div>
