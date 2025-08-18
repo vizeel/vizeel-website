@@ -49,7 +49,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="subhead text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-            Reach new customers with an AI-powered system that generates on-brand short-form videos, guided by a strategic media plan.
+            Reach new customers with an AI-powered system that generates on-brand, short form, videos guided by a strategic media plan and content calendar.
           </p>
 
           {/* Lead Capture Form */}
