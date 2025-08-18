@@ -199,23 +199,6 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              {/* Direct Email */}
-              <Card className="border-border bg-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Mail className="w-5 h-5 text-accent" />
-                    Email us directly
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <a 
-                    href="mailto:support@vizeel.com"
-                    className="text-accent hover:underline text-lg"
-                  >
-                    support@vizeel.com
-                  </a>
-                </CardContent>
-              </Card>
 
             </section>
           </div>
