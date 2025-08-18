@@ -27,7 +27,7 @@ const Pricing = () => {
       icon: Zap,
       features: [
         "Everything in Entry",
-        "+ 4 × 15s videos / month"
+        "+ 3 × 15s videos / month"
       ],
       popular: true
     },
@@ -37,7 +37,8 @@ const Pricing = () => {
       description: "Multi-location or higher volume",
       icon: Crown,
       features: [
-        "4 × 8s + 6 × 15s + 1 × 30s videos / month",
+        "Everything in Sweet Spot",
+        "+ 3 × 15s videos + 1 × 30s videos / month",
         "Priority support"
       ],
       popular: false
