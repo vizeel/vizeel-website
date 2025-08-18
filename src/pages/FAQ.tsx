@@ -12,7 +12,7 @@ const FAQ = () => {
         "name": "How long does it take to generate a video?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you activate your media plan by subscribing to a paid plan, short-form videos begin generating throughout the month according to your plan. Most customers see initial clips within 1–2 business days."
+          "text": "After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you activate your media plan by subscribing to a paid plan, short-form videos generate throughout the month according to your plan. Most customers see initial clips within 1–2 business days."
         }
       },
       {
@@ -138,7 +138,7 @@ const FAQ = () => {
                   How long does it take to generate a video?
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you activate your media plan by subscribing to a paid plan, short-form videos begin generating throughout the month according to your plan. Most customers see initial clips within 1–2 business days.
+                  After you connect your socials and add your Brand Kit, we generate your first Media Plan immediately. Once you activate your media plan by subscribing to a paid plan, short-form videos generate throughout the month according to your plan. Most customers see initial clips within 1–2 business days.
                 </p>
               </div>
 
