@@ -23,7 +23,7 @@ const Product = () => {
   const features = [
     {
       icon: Calendar,
-      title: "AI-generated media plan, customized to your business, includes a content calendar.",
+      title: "AI-generated media plan, customized to your business, includes a content calendar",
       description: "Research-driven plan that aligns with your site, services, and audience."
     },
     {
@@ -33,22 +33,22 @@ const Product = () => {
     },
     {
       icon: Monitor,
-      title: "Multi-format outputs in one pass (vertical shorts, square posts, transcript/notes)",
+      title: "Multi-format outputs in one pass: vertical shorts, square posts, transcript/notes",
       description: "Platform-ready sizes and assets."
     },
     {
       icon: Settings,
-      title: "Workspace with saved brand presets and option to add new media",
+      title: "Workspace with saved brand presets, option to add new media or update intro/outro cards",
       description: "Keep logos, colors, fonts, and cards in one place."
     }
   ];
 
   const howItWorksSteps = [
-    "Create your workspace — Sign up and set your Brand Kit once for consistent styling.",
-    "Connect accounts — Link social channels to enable publishing and scheduling.",
-    "Get your free Media Plan — Review strategy and activate when you're ready.",
-    "Pick a tier & add media (optional) — Entry, Sweet Spot, or Power User; upload brand media anytime.",
-    "Ongoing delivery — On-brand short videos generated monthly; opt into auto-posting."
+    "Create your workspace. Sign up and set your Brand Kit once for consistent styling.",
+    "Connect accounts. Link social channels to enable publishing and scheduling.",
+    "Get your free Media Plan. Review strategy and activate when you're ready.",
+    "Pick a tier & add media (optional). Entry, Sweet Spot, or Power User; upload brand media anytime.",
+    "Ongoing delivery. On-brand short videos generated monthly; opt into auto-posting."
   ];
 
   const outputs = [
@@ -60,7 +60,7 @@ const Product = () => {
   const userBenefits = [
     "Done-for-you short videos from your reviews, website, and brand media.",
     "Vertical-first clips tuned for social.",
-    "Consistent outputs—set once, we handle the rest.",
+    "Consistent outputs; set once, we handle the rest.",
     "Simple email support included."
   ];
 
@@ -68,7 +68,6 @@ const Product = () => {
     "Instagram Reels",
     "TikTok", 
     "YouTube Shorts",
-    "LinkedIn",
     "MP4 export"
   ];
 
@@ -209,7 +208,7 @@ const Product = () => {
         {/* Outputs Section */}
         <section className="py-16">
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Outputs (formats)</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Turnkey system</h2>
             <div className="max-w-4xl mx-auto">
               <div className="grid md:grid-cols-1 gap-6">
                 {outputs.map((output, index) => (
