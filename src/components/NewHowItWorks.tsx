@@ -27,7 +27,7 @@ const NewHowItWorks = () => {
     {
       icon: Link,
       title: "Short-form videos are auto generated",
-      description: "adding new media is optional"
+      description: "AI-enhanced videos are delivered per your content calendar and/or posted on your behalf; adding images for use in upcoming videos is optional"
     }
   ];
 
