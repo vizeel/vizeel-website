@@ -16,7 +16,7 @@ const WhyVizeel = () => {
           </h2>
           <div className="text-xl text-muted-foreground max-w-3xl mx-auto space-y-4">
             <p>
-              Posting consistently is hard—planning, editing, and captioning take time.
+              Posting consistently is hard: planning, editing, and captioning brand posts takes time.
             </p>
             <p>
               Vizeel researches, plans, and generates short videos for you, then auto-posts after your approval.
