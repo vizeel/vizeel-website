@@ -12,7 +12,7 @@ const NewHowItWorks = () => {
     {
       icon: Palette,
       title: "Add your Brand Kit once",
-      description: "style guide with brand color and preferences\noptional intro/outro cards"
+      description: "Set your brand style and optional intro/outro cards for use in each video"
     },
     {
       icon: Calendar,
