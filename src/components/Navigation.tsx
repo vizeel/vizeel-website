@@ -56,7 +56,7 @@ const Navigation = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="outline" size="sm" asChild>
+          <Button variant="outline" className="btn-primary" size="sm" asChild>
             <a href="https://app.vizeel.com" target="_blank" rel="noopener noreferrer">
               Login
             </a>
