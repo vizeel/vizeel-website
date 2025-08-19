@@ -61,7 +61,7 @@ const Navigation = () => {
               Login
             </a>
           </Button>
-          <Button variant="accent" size="sm" asChild>
+          <Button variant="accent" className="btn-primary" size="sm" asChild>
             <Link to="/contact">Join waitlist</Link>
           </Button>
         </div>
@@ -100,12 +100,12 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="pt-4 space-y-2">
-                <Button variant="outline" size="sm" className="w-full" asChild>
+                <Button variant="outline" size="sm" className="w-full btn-primary" asChild>
                   <a href="https://app.vizeel.com" target="_blank" rel="noopener noreferrer">
                     Login
                   </a>
                 </Button>
-                <Button variant="accent" size="sm" className="w-full" asChild>
+                <Button variant="accent" size="sm" className="w-full btn-primary" asChild>
                   <Link to="/contact" onClick={() => setIsOpen(false)}>Join waitlist</Link>
                 </Button>
               </div>
