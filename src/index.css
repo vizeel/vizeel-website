@@ -2,74 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Hide scrollbar for horizontal carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* AI Video Generation App Design System */
 
 @layer base {
   :root {
-    /* AdWink Brand Colors - Professional Theme */
-    --background: 0 0% 100%;
-    --foreground: 222 84% 4.9%;
+    /* Base colors */
+    --background: 0 0% 98%;
+    --foreground: 220 15% 16%;
 
+    /* Card system */
     --card: 0 0% 100%;
-    --card-foreground: 222 84% 4.9%;
+    --card-foreground: 220 15% 16%;
+    --card-hover: 0 0% 97%;
 
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 4.9%;
+    --popover-foreground: 220 15% 16%;
 
-    /* Primary - Professional Dark */
-    --primary: 222 84% 4.9%;
-    --primary-foreground: 210 40% 98%;
-    --primary-glow: 348 90% 70%;
+    /* Brand colors */
+    --primary: 348 83% 47%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 348 83% 65%;
 
-    /* Secondary - Light Gray */
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 84% 4.9%;
+    /* Secondary palette */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 15% 16%;
 
-    /* Accent - Subtle Pink (used sparingly) */
-    --accent: 348 83% 58%;
-    --accent-foreground: 0 0% 100%;
+    /* Muted colors */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    /* Success - Professional Green */
-    --success: 142 76% 45%;
-    --success-foreground: 0 0% 100%;
+    /* Accent system */
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 15% 16%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Border and input */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 348 83% 47%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222 84% 4.9%;
+    /* Sidebar colors */
+    --sidebar-background: 220 15% 16%;
+    --sidebar-foreground: 220 9% 46%;
+    --sidebar-primary: 348 83% 47%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 220 12% 20%;
+    --sidebar-accent-foreground: 220 9% 80%;
+    --sidebar-border: 220 12% 24%;
 
-    /* Gradients - Professional and Clean */
-    --gradient-primary: linear-gradient(135deg, hsl(222 84% 4.9%), hsl(222 84% 15%));
-    --gradient-hero: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(222 84% 15%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(348 83% 58%) 0%, hsl(348 90% 70%) 100%);
-    
-    /* Shadows - Subtle */
-    --shadow-vibrant: 0 4px 20px -4px hsl(222 84% 4.9% / 0.1);
-    --shadow-glow: 0 0 20px hsl(348 83% 58% / 0.2);
-    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(348 83% 47%) 0%, hsl(348 83% 65%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(348 83% 47%) 0%, hsl(262 83% 58%) 50%, hsl(213 94% 68%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 15% 16% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 15% 16% / 0.1), 0 2px 4px -1px hsl(220 15% 16% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(220 15% 16% / 0.1), 0 4px 6px -2px hsl(220 15% 16% / 0.05);
+    --shadow-glow: 0 0 20px hsl(348 83% 47% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -124,99 +146,160 @@ All colors MUST be HSL.
   }
 }
 
-/* Hero contrast fixes - removed conflicting styles */
+@layer components {
+  /* Template card hover effects */
+  .template-card {
+    @apply transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1;
+    background: var(--gradient-card);
+  }
 
-/* Home hero text readability - white text on dark hero only */
+  .template-card:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Sidebar navigation effects */
+  .nav-item {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .nav-item:hover {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground;
+  }
+
+  .nav-item.active {
+    @apply bg-sidebar-primary text-sidebar-primary-foreground;
+  }
+
+  /* Button gradients */
+  .btn-primary {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground transition-all duration-300;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Infinite scroll animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Status badges */
+  .badge-new {
+    @apply bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-pro {
+    @apply bg-warning text-warning-foreground px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  /* SVG Icon color override */
+  [style*="--svg-fill-color"] svg g,
+  .logo-fill svg g {
+    fill: var(--svg-fill-color) !important;
+  }
+
+  [style*="--svg-fill-color"] svg path,
+  .logo-fill svg path {
+    fill: var(--svg-fill-color) !important;
+  }
+
+  /* Logo fill color */
+  .logo-fill {
+    --svg-fill-color: hsl(var(--primary));
+  }
+  
+  .background-gradient {
+    @apply bg-gradient-to-br from-primary/5 to-primary/10 border-b;
+  }
+}
+
+/* Hero contrast fixes */
 #home-hero h1,
 #home-hero .h1 {
-  color: #FFFFFF !important;         /* white headline on dark hero */
-  font-weight: 800;                   /* keep current weight */
+  color: #FFFFFF !important;
+  font-weight: 800;
 }
 
 #home-hero h1 .accent,
 #home-hero .h1 .accent {
-  color: #E12C50 !important;          /* brand pink accent */
+  color: hsl(var(--primary)) !important;
 }
 
 #home-hero .subhead,
 #home-hero p.subhead {
-  color: rgba(255,255,255,0.88) !important;  /* readable white subhead */
+  color: rgba(255,255,255,0.88) !important;
 }
-
-/* Guard against any global white-text overrides breaking inheritance */
-#home-hero .text-white,
-#home-hero *[style*="color:#fff"],
-#home-hero *[style*="color: #fff"] {
-  color: inherit !important;
-}
-
-/* Removed overlay CSS to prevent duplication */
 
 /* How It Works Section Styling */
 #how-it-works {
   border-radius: 24px;
   padding: 28px;
-  /* Left→right soft background to imply progression */
-  background: linear-gradient(90deg, rgba(225,44,80,0.08) 0%, rgba(124,66,136,0.08) 100%);
+  background: linear-gradient(90deg, hsl(var(--primary) / 0.08) 0%, hsl(262 83% 58% / 0.08) 100%);
 }
 
-/* Hide small number badges (top-right) */
 #how-it-works .step-badge,
 #how-it-works [class*="badge"],
-#how-it-works [class*="step-number"] { display: none !important; }
+#how-it-works [class*="step-number"] { 
+  display: none !important; 
+}
 
-/* Card styling + subtle tints; keep dark text for contrast */
 #how-it-works .how-card {
   background: #fff;
-  border: 1px solid #E5E7EB;
+  border: 1px solid hsl(var(--border));
   border-radius: 16px;
-  padding: 18px 16px;
-  color: #24272F;
+  padding: 14px;
+  color: hsl(var(--foreground));
   box-shadow: 0 1px 2px rgba(0,0,0,.03);
 }
-#how-it-works .how-card:nth-child(1){ background: linear-gradient(180deg, rgba(225,44,80,0.06), #fff 70%); }
-#how-it-works .how-card:nth-child(2){ background: linear-gradient(180deg, rgba(225,44,80,0.04), #fff 70%); }
-#how-it-works .how-card:nth-child(3){ background: linear-gradient(180deg, rgba(196,101,140,0.05), #fff 70%); }
-#how-it-works .how-card:nth-child(4){ background: linear-gradient(180deg, rgba(149,82,150,0.05), #fff 70%); }
-#how-it-works .how-card:nth-child(5){ background: linear-gradient(180deg, rgba(124,66,136,0.06), #fff 70%); }
 
-/* Optional: give the pictogram icon a pink→purple fill */
+#how-it-works .how-card:nth-child(1) { 
+  background: linear-gradient(180deg, hsl(var(--primary) / 0.06), #fff 70%); 
+}
+#how-it-works .how-card:nth-child(2) { 
+  background: linear-gradient(180deg, hsl(var(--primary) / 0.04), #fff 70%); 
+}
+#how-it-works .how-card:nth-child(3) { 
+  background: linear-gradient(180deg, hsl(var(--primary) / 0.05), #fff 70%); 
+}
+#how-it-works .how-card:nth-child(4) { 
+  background: linear-gradient(180deg, hsl(262 83% 58% / 0.05), #fff 70%); 
+}
+#how-it-works .how-card:nth-child(5) { 
+  background: linear-gradient(180deg, hsl(262 83% 58% / 0.06), #fff 70%); 
+}
+
 #how-it-works .how-card .icon {
-  background: linear-gradient(135deg, #E12C50, #7C4288);
+  background: var(--gradient-primary);
   color: #fff;
-  width: 44px; height: 44px; border-radius: 50%;
-  display: inline-flex; align-items: center; justify-content: center;
-  margin: 6px auto 4px;
-}
-
-/* Slim progress bar beneath the row */
-#how-it-works .how-progress {
-  height: 6px; max-width: 420px;
-  margin: 14px auto 0; border-radius: 999px;
-  background: linear-gradient(90deg, #E12C50, #7C4288);
-}
-
-/* Reduced card height styling */
-#how-it-works .how-card {
-  padding: 14px 14px;          /* was ~18px */
-  border-radius: 14px;
-}
-#how-it-works .how-card .icon {
-  width: 40px; height: 40px;   /* was ~44px */
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%;
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center;
   margin: 4px auto;
 }
-#how-it-works .how-card .title {
-  font-size: 18px;             /* was ~20px */
-  line-height: 1.25;
-  margin: 4px 0 2px;
-}
-#how-it-works .how-card .sub {
-  font-size: 13px;             /* tighten */
-  margin: 0;
-}
-#how-it-works .steps { gap: 14px; }  /* slight reduction */
-@media (min-width:1024px){
-  #how-it-works { padding-top:24px; padding-bottom:24px; }
+
+#how-it-works .how-progress {
+  height: 6px; 
+  max-width: 420px;
+  margin: 14px auto 0; 
+  border-radius: 999px;
+  background: var(--gradient-primary);
 }
 
 #who-for {
@@ -225,8 +308,8 @@ All colors MUST be HSL.
   border-radius: 24px;
   padding: 24px;
   background:
-    radial-gradient(40% 40% at 0% 0%,    rgba(225,44,80,0.10),  rgba(225,44,80,0.0) 60%),  /* pink corner glow */
-    radial-gradient(40% 40% at 100% 100%, rgba(124,66,136,0.12), rgba(124,66,136,0.0) 60%), /* purple corner glow */
+    radial-gradient(40% 40% at 0% 0%, hsl(var(--primary) / 0.10), hsl(var(--primary) / 0.0) 60%),
+    radial-gradient(40% 40% at 100% 100%, hsl(262 83% 58% / 0.12), hsl(262 83% 58% / 0.0) 60%),
     #FFFFFF;
 }
 
@@ -235,25 +318,22 @@ All colors MUST be HSL.
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.10;  /* adjust 0.06–0.14 if needed after QA */
+  opacity: 0.10;
   background:
-    repeating-linear-gradient(60deg,  rgba(36,39,47,.25) 0, rgba(36,39,47,.25) 1px, transparent 1px, transparent 18px),
-    repeating-linear-gradient(-60deg, rgba(36,39,47,.20) 0, rgba(36,39,47,.20) 1px, transparent 1px, transparent 18px),
-    repeating-linear-gradient(0deg,   rgba(36,39,47,.12) 0, rgba(36,39,47,.12) 1px, transparent 1px, transparent 18px);
+    repeating-linear-gradient(60deg, hsl(var(--foreground) / .25) 0, hsl(var(--foreground) / .25) 1px, transparent 1px, transparent 18px),
+    repeating-linear-gradient(-60deg, hsl(var(--foreground) / .20) 0, hsl(var(--foreground) / .20) 1px, transparent 1px, transparent 18px),
+    repeating-linear-gradient(0deg, hsl(var(--foreground) / .12) 0, hsl(var(--foreground) / .12) 1px, transparent 1px, transparent 18px);
   mask: radial-gradient(80% 80% at 50% 50%, #000 60%, transparent 100%);
 }
 
-/* Maintain readability on a light surface - but preserve gradients */
 #who-for h2, #who-for h3, #who-for p, #who-for span:not(.bg-clip-text) { 
-  color: #24272F !important; 
+  color: hsl(var(--foreground)) !important; 
 }
 
-/* Keep gradient text effects working */
 #who-for .bg-clip-text.text-transparent { 
   color: transparent !important; 
 }
 
-/* Keep gradient icon backgrounds working */
 #who-for .bg-gradient-primary { 
   background: var(--gradient-primary) !important;
   color: #FFFFFF !important; 
