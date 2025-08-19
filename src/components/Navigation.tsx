@@ -43,10 +43,10 @@ const Navigation = () => {
               key={item.href}
               to={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-foreground",
+                "text-sm font-medium transition-colors hover:text-primary",
                 isActiveRoute(item.href)
-                  ? "text-foreground"
-                  : "text-muted-foreground"
+                  ? "text-primary font-semibold"
+                  : "text-foreground"
               )}
             >
               {item.label}
@@ -56,12 +56,12 @@ const Navigation = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="outline" className="btn-primary" size="sm" asChild>
+          <Button variant="outline" size="sm" asChild>
             <a href="https://app.vizeel.com" target="_blank" rel="noopener noreferrer">
               Login
             </a>
           </Button>
-          <Button variant="accent" className="btn-primary" size="sm" asChild>
+          <Button className="btn-primary" size="sm" asChild>
             <Link to="/contact">Join waitlist</Link>
           </Button>
         </div>
@@ -90,22 +90,22 @@ const Navigation = () => {
                   to={item.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-foreground px-3 py-2 rounded-md",
+                    "text-sm font-medium transition-colors hover:text-primary px-3 py-2 rounded-md",
                     isActiveRoute(item.href)
-                      ? "text-foreground bg-accent/10"
-                      : "text-muted-foreground"
+                      ? "text-primary bg-primary/10 font-semibold"
+                      : "text-foreground"
                   )}
                 >
                   {item.label}
                 </Link>
               ))}
               <div className="pt-4 space-y-2">
-                <Button variant="outline" size="sm" className="w-full btn-primary" asChild>
+                <Button variant="outline" size="sm" className="w-full" asChild>
                   <a href="https://app.vizeel.com" target="_blank" rel="noopener noreferrer">
                     Login
                   </a>
                 </Button>
-                <Button variant="accent" size="sm" className="w-full btn-primary" asChild>
+                <Button size="sm" className="w-full btn-primary" asChild>
                   <Link to="/contact" onClick={() => setIsOpen(false)}>Join waitlist</Link>
                 </Button>
               </div>
