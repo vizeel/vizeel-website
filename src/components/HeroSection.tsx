@@ -73,10 +73,9 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
-              variant="accent" 
               size="lg" 
               onClick={handleGetStarted}
-              className="text-lg px-8 py-6 h-auto"
+              className="btn-primary text-lg px-8 py-6 h-auto"
             >
               <Play className="w-5 h-5 mr-2" />
               Join waitlist
