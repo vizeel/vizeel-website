@@ -4,6 +4,7 @@ import { Play, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import heroImage from "@/assets/hero-bg.jpg";
+import { supabase } from "@/lib/supabaseClient";
 
 const HeroSection = () => {
   const [email, setEmail] = useState("");
@@ -28,22 +29,36 @@ const HeroSection = () => {
       // Execute reCAPTCHA
       const recaptchaToken = await executeRecaptcha("waitlist_submit");
       
-      // Here you would send the form data along with the recaptchaToken to your server
-      const formData = {
-        email,
-        phone,
-        recaptchaToken
-      };
-      
-      console.log("Lead captured with reCAPTCHA:", formData);
-      
-      // Replace this with your actual API call to your private server
-      // const response = await fetch('/api/waitlist', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
+      // Prepare payload
+      const formData = { email, phone, recaptchaToken };
+
+      // Insert into Supabase
+      const { error: insertError } = await supabase
+        .from("waitlist_signups")
+        .insert({
+          email,
+          phone,
+          recaptcha_token: recaptchaToken,
+          source: "hero_join_waitlist",
+        });
+
+      if (insertError) {
+        console.error("Supabase insert error:", insertError);
+        throw new Error("Could not save your signup. Please try again.");
+      }
+
+      console.log(
+        "Lead captured with reCAPTCHA and saved to Supabase:",
+        formData
+      );
+
+      // Optionally also send to your private server (reCAPTCHA verification, etc.)
+      // await fetch("https://your-server.example.com/api/waitlist", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(formData),
       // });
-      
+
       alert("Thanks for your interest! We'll be in touch soon.");
       setEmail("");
       setPhone("");
