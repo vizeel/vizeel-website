@@ -23,11 +23,11 @@ const HeroSection = () => {
   return (
     <section 
       id="home-hero" 
-      className="hero relative min-h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${heroImage})` }}
+      className="hero relative min-h-screen flex items-center justify-center primary-bg"
+      // style={{ backgroundImage: `url(${heroImage})` }}
     >
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/20" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -40,16 +40,15 @@ const HeroSection = () => {
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Turn Ideas into{" "}
+            AI Videos made simple{" "}
             <span className="accent">
-              Scroll-Stopping Videos
+              for SMBs
             </span>{" "}
-            in Seconds
           </h1>
 
           {/* Subtitle */}
           <p className="subhead text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
-            Reach new customers with an AI-powered system that generates on-brand, short form, videos guided by a strategic media plan and content calendar.
+            We analyze, plan, and auto-generate on-brand reels —so you can focus on running your business.
           </p>
 
           {/* Lead Capture Form */}
