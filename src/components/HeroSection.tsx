@@ -2,21 +2,56 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Play, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import heroImage from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleGetStarted = () => {
-    if (email && phone) {
-      console.log("Lead captured:", { email, phone });
-      // Here you would typically send this to your backend
+  const handleGetStarted = async () => {
+    if (!email || !phone) {
+      alert("Please fill in both email and phone number.");
+      return;
+    }
+
+    if (!executeRecaptcha) {
+      alert("reCAPTCHA not ready. Please try again.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Execute reCAPTCHA
+      const recaptchaToken = await executeRecaptcha("waitlist_submit");
+      
+      // Here you would send the form data along with the recaptchaToken to your server
+      const formData = {
+        email,
+        phone,
+        recaptchaToken
+      };
+      
+      console.log("Lead captured with reCAPTCHA:", formData);
+      
+      // Replace this with your actual API call to your private server
+      // const response = await fetch('/api/waitlist', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData)
+      // });
+      
       alert("Thanks for your interest! We'll be in touch soon.");
       setEmail("");
       setPhone("");
-    } else {
-      alert("Please fill in both email and phone number.");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -74,10 +109,11 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               onClick={handleGetStarted}
+              disabled={isSubmitting}
               className="btn-primary text-lg px-8 py-6 h-auto"
             >
               <Play className="w-5 h-5 mr-2" />
-              Join waitlist
+              {isSubmitting ? "Submitting..." : "Join waitlist"}
             </Button>
           </div>
 
