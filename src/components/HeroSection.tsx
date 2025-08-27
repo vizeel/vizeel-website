@@ -25,6 +25,15 @@ const HeroSection = () => {
 
     setIsSubmitting(true);
 
+    // Ensure Supabase is configured to avoid runtime errors
+    if (!supabase) {
+      alert(
+        "Signup temporarily unavailable. Supabase is not configured. Please add your Supabase URL and anon key in src/lib/supabaseClient.ts."
+      );
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       // Execute reCAPTCHA
       const recaptchaToken = await executeRecaptcha("waitlist_submit");
