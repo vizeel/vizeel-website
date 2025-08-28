@@ -3,7 +3,6 @@ import { Play, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-
   return (
     <section 
       id="home-hero" 

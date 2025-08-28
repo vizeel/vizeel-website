@@ -22,7 +22,7 @@ const Terms = () => {
       </Helmet>
 
       <main className="min-h-screen bg-background">
-        <section className="py-16 md:py-24">
+        <section className="py-2 md:py-2">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto prose prose-lg max-w-none">
               <div className="text-sm text-muted-foreground mb-6">

@@ -187,7 +187,7 @@ const Pricing = () => {
 
       <main className="min-h-screen bg-background">
         {/* Plan Comparison */}
-        <section className="py-16 md:py-24">
+        <section className="py-2 md:py-2">
           <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
               <Crown className="mx-auto h-12 w-12 text-primary mb-4" />

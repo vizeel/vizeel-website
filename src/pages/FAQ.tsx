@@ -118,7 +118,7 @@ const FAQ = () => {
 
       <main className="min-h-screen bg-background">
         {/* Header */}
-        <section className="py-16 md:py-24">
+        <section className="py-2 md:py-2">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">

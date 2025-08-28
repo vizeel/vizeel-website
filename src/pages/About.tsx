@@ -131,7 +131,7 @@ const About = () => {
 
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="py-16 md:py-24">
+        <section className="py-2 md:py-2">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
               <div className="flex items-center justify-center gap-2 mb-6">
