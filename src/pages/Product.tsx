@@ -123,15 +123,18 @@ const Product = () => {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
+              <Video className="mx-auto h-12 w-12 text-primary mb-4" />
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-                Product Tour
+                Product Tour, 
+                <span className="text-primary"> of Vizeel</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
                 Vizeel researches, plans, and generates short videos for your brand. Using an AI-powered media plan and content planning process, Vizeel efficiently delivers a steady stream of content that fits with your brand and reaches new customers.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="accent" size="lg" asChild>
-                  <a href="/signup">Join waitlist</a>
+                <Button className="btn-primary"
+             size="lg" asChild>
+                  <a href="/contact">Join waitlist</a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href="/pricing">See Pricing</a>
@@ -151,7 +154,7 @@ const Product = () => {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
-                        <feature.icon className="w-5 h-5 text-accent" />
+                        <feature.icon className="w-5 h-5 text-primary" />
                       </div>
                       <CardTitle className="text-lg">{feature.title}</CardTitle>
                     </div>
@@ -176,7 +179,7 @@ const Product = () => {
                 {howItWorksSteps.map((step, index) => (
                   <Card key={index} className="border-border bg-card text-center">
                     <CardContent className="p-6">
-                      <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm mx-auto mb-4">
+                      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm mx-auto mb-4">
                         {index + 1}
                       </div>
                       <p className="text-foreground text-sm">{step}</p>
@@ -213,7 +216,7 @@ const Product = () => {
               <div className="grid md:grid-cols-1 gap-6">
                 {outputs.map((output, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <FileText className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
+                    <FileText className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                     <span className="text-foreground">{output}</span>
                   </div>
                 ))}
@@ -227,9 +230,11 @@ const Product = () => {
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Integrations</h2>
             <div className="max-w-4xl mx-auto">
-              <p className="text-center text-muted-foreground mb-6">
-                Instagram, TikTok, YouTube Shorts; MP4 export for anywhere else. Auto-posting requires connected accounts and your approval.
-              </p>
+              <div className="flex items-center justify-center gap-2 text-center text-muted-foreground mb-6">
+                <span>
+                  Instagram, TikTok, YouTube Shorts; MP4 export for anywhere else. Auto-posting requires connected accounts and your approval.
+                </span>
+              </div>
               <div className="flex flex-wrap justify-center gap-4">
                 {integrations.map((integration, index) => (
                   <Badge key={index} variant="outline" className="px-4 py-2 text-sm">
@@ -255,7 +260,7 @@ const Product = () => {
                   Single-tenant storage per workspace; staff access limited to support.
                 </p>
                 <p>
-                  See <a href="/privacy" className="text-accent hover:underline">/privacy</a> for details.
+                  See <a href="/privacy" className="text-primary hover:underline">privacy</a> for details.
                 </p>
               </div>
             </div>

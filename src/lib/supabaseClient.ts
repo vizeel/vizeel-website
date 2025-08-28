@@ -2,8 +2,8 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 // Public anon key only. Do NOT put your service role key here.
 // Replace with your project's values from Supabase: Project Settings → API
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://lvmdsvxfzeevdtolhoin.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx2bWRzdnhmemVldmR0b2xob2luIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzMzc3MDUsImV4cCI6MjA3MTkxMzcwNX0.ay1BvRiSBPk2NaUu4ZzzF2vbN6OM1rTZ_5FlUy1fc4o";
 
 const configured =
   typeof SUPABASE_URL === "string" &&

@@ -2,7 +2,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { ReactNode } from "react";
 
 // Replace with your actual reCAPTCHA site key
-const RECAPTCHA_SITE_KEY = "YOUR_RECAPTCHA_SITE_KEY_HERE";
+const RECAPTCHA_SITE_KEY = "6LdJwrMrAAAAAO5dIjBjOrqVsckNg9tL4kDmLnh3";
 
 interface ReCaptchaProviderProps {
   children: ReactNode;

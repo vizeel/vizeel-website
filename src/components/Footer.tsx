@@ -1,25 +1,23 @@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { 
-  Linkedin, 
-  Instagram, 
-  Facebook, 
-  Youtube, 
-  Music, 
-  Mail, 
-  Phone,
-  Shield,
+import {
+  Facebook,
   FileText,
-  Sparkles
+  Instagram,
+  Linkedin,
+  Music,
+  Shield,
+  Sparkles,
+  Youtube
 } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com/adwink", label: "Instagram" },
-    { icon: Facebook, href: "https://facebook.com/adwink", label: "Facebook" },
-    { icon: Music, href: "https://tiktok.com/@adwink", label: "TikTok" },
-    { icon: Youtube, href: "https://youtube.com/@adwink", label: "YouTube" },
-    { icon: Linkedin, href: "https://linkedin.com/company/adwink", label: "LinkedIn" }
+    { icon: Instagram, href: "https://www.instagram.com/vizeel.ai/", label: "Instagram" },
+    // { icon: Facebook, href: "https://facebook.com/adwink", label: "Facebook" },
+    // { icon: Music, href: "https://tiktok.com/@adwink", label: "TikTok" },
+    // { icon: Youtube, href: "https://youtube.com/@adwink", label: "YouTube" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/vizeel/", label: "LinkedIn" }
   ];
 
   const quickLinks = [
@@ -45,7 +43,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-5 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
@@ -83,27 +81,68 @@ const Footer = () => {
             {/* Trust Badges */}
             <div>
               <h4 className="font-semibold text-foreground mb-6">Trust & Security</h4>
-              <div className="space-y-3 mb-6">
+              <div className="grid grid-cols-1 gap-3 mb-6">
                 {trustBadges.map((badge, index) => (
-                  <Badge key={index} variant="outline" className="w-full justify-start">
-                    <Shield className="w-3 h-3 mr-2" />
-                    {badge}
-                  </Badge>
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 p-3 rounded-lg bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200/50 hover:border-green-300 transition-all duration-300"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                      <Shield className="w-4 h-4 text-green-600" />
+                    </div>
+                    <span className="text-sm font-medium text-green-800">{badge}</span>
+                  </div>
                 ))}
               </div>
               
-              {/* Legal Links */}
-              <div className="space-y-2">
-                {legalLinks.map((link, index) => (
+            </div>
+
+            {/* Social Links */}
+            <div>
+              <h4 className="font-semibold text-foreground mb-6">Follow Us</h4>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((link, index) => (
                   <a
                     key={index}
                     href={link.href}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    aria-label={`Follow us on ${link.label}`}
                   >
-                    <link.icon className="w-3 h-3" />
-                    {link.label}
+                    <link.icon className="w-5 h-5" />
                   </a>
                 ))}
+              </div>
+            </div>
+
+            {/* About Us */}
+            <div>
+              <h4 className="font-semibold text-foreground mb-6">About Us</h4>
+              <div className="space-y-4">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Founded by two experienced professionals who have worked together for 11 years, Vizeel is dedicated to helping small and medium businesses grow through AI-powered video content.
+                </p>
+                <div className="space-y-2">
+                  <a
+                    href="https://www.linkedin.com/in/founder1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    <span>Founder 1</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/founder2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    <span>Founder 2</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -117,12 +156,7 @@ const Footer = () => {
             <div className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Vizeel. All rights reserved.
             </div>
-            
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <Badge variant="outline" className="text-xs">
-                Powered by AI
-              </Badge>
-            </div>
+          
           </div>
         </div>
       </div>

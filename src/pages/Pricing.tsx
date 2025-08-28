@@ -4,44 +4,63 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Helmet } from "react-helmet-async";
-import { Check, Video, Zap, Crown, HelpCircle } from "lucide-react";
+import { Check, Video, Zap, Crown, HelpCircle, CheckCircle, AlertCircle } from "lucide-react";
 
 const Pricing = () => {
+  // Plan constants matching the Billing.tsx structure
+  const PLAN_PRICES = {
+    Entry: { monthly: 75 },
+    Pro: { monthly: 149 },
+    Enterprise: { monthly: 299 }
+  };
+
+  const PlanType = {
+    Entry: "Entry",
+    Pro: "Pro", 
+    Enterprise: "Enterprise"
+  } as const;
+
   const plans = [
     {
-      name: "Entry",
-      price: 75,
-      description: "Starter presence, 1–2 channels",
+      name: PlanType.Entry,
+      price: PLAN_PRICES.Entry.monthly,
+      description: "Perfect for new brands",
       icon: Video,
       features: [
-        "4 × 8s videos / month",
-        "Auto-posting",
-        "Calendar & approvals"
+        "4 reels per Month",
+        "Basic analytics and insights",
+        "Email support"
       ],
-      popular: false
+      popular: false,
+      color: "green"
     },
     {
-      name: "Sweet Spot",
-      price: 149,
-      description: "Steady cadence across 2–3 channels",
+      name: PlanType.Pro,
+      price: PLAN_PRICES.Pro.monthly,
+      description: "Perfect for most brands",
       icon: Zap,
       features: [
-        "Everything in Entry",
-        "+ 3 × 15s videos / month"
+        "8 reels per Month",
+        "Standard processing priority",
+        "Basic analytics and insights",
+        "Email support"
       ],
-      popular: true
+      popular: true,
+      color: "orange"
     },
     {
-      name: "Power User",
-      price: 299,
-      description: "Multi-location or higher volume",
+      name: PlanType.Enterprise,
+      price: PLAN_PRICES.Enterprise.monthly,
+      description: "Advanced features for power users",
       icon: Crown,
       features: [
-        "Everything in Sweet Spot",
-        "+ 3 × 15s videos + 1 × 30s videos / month",
-        "Priority support"
+        "16 reels per Month",
+        "Priority processing & faster renders",
+        "Advanced analytics dashboard",
+        "Priority support & custom integrations"
       ],
-      popular: false
+      popular: false,
+      color: "blue"
     }
   ];
 
@@ -60,6 +79,14 @@ const Pricing = () => {
     {
       question: "Can I change plans later?",
       answer: "Yes, upgrade or downgrade anytime. Changes take effect in the next billing cycle."
+    },
+    {
+      question: "How does the content publishing work?",
+      answer: "Connect your social accounts once. We then generate and post content on your behalf, following your content calendar. You can turn off auto-posting and specify blackout dates for content."
+    },
+    {
+      question: "Can I use my own branding and assets?",
+      answer: "Yes. Add your Brand Kit (logos, colors, fonts) plus intro/outro cards once. We'll apply those presets so every video stays on brand."
     }
   ];
 
@@ -106,6 +133,24 @@ const Pricing = () => {
     ]
   };
 
+  const getPlanBorderColor = (color: string) => {
+    switch (color) {
+      case 'green': return 'border-green-200';
+      case 'orange': return 'border-red-600';
+      case 'blue': return 'border-blue-200';
+      default: return 'border-border';
+    }
+  };
+
+  const getPlanTextColor = (color: string) => {
+    switch (color) {
+      case 'green': return 'text-green-700';
+      case 'orange': return 'text-red-600';
+      case 'blue': return 'text-blue-700';
+      default: return 'text-foreground';
+    }
+  };
+
   return (
     <>
       <Navigation />
@@ -141,63 +186,67 @@ const Pricing = () => {
       </Helmet>
 
       <main className="min-h-screen bg-background">
-        {/* Hero Section */}
+        {/* Plan Comparison */}
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-                Pricing
+          <div className="max-w-4xl mx-auto text-center">
+              <Crown className="mx-auto h-12 w-12 text-primary mb-4" />
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+                Choose the right plan, 
+                <span className="text-primary"> for your brand</span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Simple monthly plans for AI short videos that post themselves.
-              </p>
+              <p className="text-muted-foreground">Each brand gets its own separate subscription</p>
             </div>
+   
           </div>
         </section>
 
-        {/* Pricing Cards */}
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                 
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {plans.map((plan, index) => (
                 <Card 
                   key={index} 
-                  className={`relative border-border bg-card ${
-                    plan.popular ? 'border-accent shadow-lg scale-105' : ''
+                  className={`relative flex flex-col ${getPlanBorderColor(plan.color)} bg-card ${
+                    plan.popular ? 'shadow-lg scale-105' : ''
                   }`}
                 >
                   {plan.popular && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <Badge variant="default" className="bg-accent text-white">
+                      <Badge variant="default" className="bg-red-600 text-white">
                         Recommended
                       </Badge>
                     </div>
                   )}
-                  <CardHeader className="text-center pb-4">
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                      <plan.icon className="w-6 h-6 text-accent" />
+                  <CardHeader className="text-center pb-6">
+                    <div className="w-4 h-1 bg-accent/10 rounded-lg mx-auto mb-4 flex items-center justify-center">
                     </div>
-                    <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                    <div className="text-3xl font-bold text-foreground">
-                      ${plan.price}
-                      <span className="text-sm font-normal text-muted-foreground">/ month</span>
-                    </div>
+                    <CardTitle className={`text-xl font-bold ${getPlanTextColor(plan.color)}`}>
+                      {plan.name} - ${plan.price}/month
+                    </CardTitle>
                     <CardDescription className="text-muted-foreground">
                       {plan.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 mb-6">
+                  <CardContent className="flex-1 flex flex-col">
+                    <ul className="text-sm space-y-3 mb-8 flex-1">
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start gap-3">
-                          <Check className="w-4 h-4 text-success flex-shrink-0 mt-1" />
-                          <span className="text-sm text-foreground">{feature}</span>
+                          <Check className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                          <span className="text-foreground">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     <Button 
-                      variant={plan.popular ? "accent" : "outline"} 
-                      className="w-full"
+                      variant={plan.popular ? "default" : "outline"} 
+                      className={`w-full mt-auto ${
+                        plan.popular 
+                          ? 'bg-red-600 hover:bg-red-700' 
+                          : plan.color === 'green' 
+                            ? 'border-green-300 text-green-700 hover:bg-green-50'
+                            : plan.color === 'blue'
+                              ? 'border-blue-300 text-blue-700 hover:bg-blue-50'
+                              : ''
+                      }`}
                       asChild
                     >
                       <a href="/contact">Join waitlist</a>
@@ -206,11 +255,9 @@ const Pricing = () => {
                 </Card>
               ))}
             </div>
-          </div>
-        </section>
 
         {/* Plan Details */}
-        <section className="py-16 bg-muted/30">
+        <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Plan details</h2>
@@ -238,10 +285,10 @@ const Pricing = () => {
         </section>
 
         {/* FAQ Snippet */}
-        <section className="py-16">
+        <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-center mb-12 text-foreground">FAQ snippet</h2>
+              <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Frequently Asked Questions</h2>
               <div className="space-y-6">
                 {faqs.map((faq, index) => (
                   <Card key={index} className="border-border bg-card">
@@ -250,10 +297,10 @@ const Pricing = () => {
                         <HelpCircle className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
                         <div>
                           <h3 className="font-semibold text-foreground mb-2">
-                            Q: {faq.question}
+                            {faq.question}
                           </h3>
                           <p className="text-muted-foreground">
-                            A: {faq.answer}
+                            {faq.answer}
                           </p>
                         </div>
                       </div>
@@ -262,22 +309,10 @@ const Pricing = () => {
                 ))}
               </div>
               <div className="text-center mt-8">
-                <p className="text-muted-foreground">
-                  Questions? <a href="/faq" className="text-accent hover:underline">See all FAQs →</a>
+                <p className="">
+                  Questions? <a href="/faq" className="text-pimary  hover:underline">See all FAQs →</a>
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 bg-accent/5">
-          <div className="container mx-auto px-6 text-center">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-foreground">Interested in early access?</h2>
-              <Button variant="accent" size="lg" asChild>
-                <a href="/contact">Join waitlist</a>
-              </Button>
             </div>
           </div>
         </section>

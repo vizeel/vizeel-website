@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import SvgIcon from "./SvgIcon";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,7 @@ const Navigation = () => {
     { label: "Home", href: "/" },
     { label: "Product", href: "/product" },
     { label: "Pricing", href: "/pricing" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -28,12 +30,14 @@ const Navigation = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-accent rounded-lg flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-bold bg-gradient-accent bg-clip-text text-transparent">
-            Vizeel
-          </span>
+        <SvgIcon 
+          src="/logo.svg" 
+          alt="Logo" 
+          width={80} 
+          height={80}
+          className="object-contain logo-fill"
+          backgroundColor="transparent"
+        />
         </Link>
 
         {/* Desktop Navigation */}

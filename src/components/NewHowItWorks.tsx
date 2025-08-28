@@ -6,30 +6,31 @@ const NewHowItWorks = () => {
   const steps = [
     {
       icon: UserPlus,
-      title: "Sign up at app.vizeel.com",
-      description: "connect your brands' social accounts to kick off the research and planning process"
+      title: "Sign up",
+      description: "Connect your brand’s social accounts to start the research and planning process."
     },
     {
       icon: Palette,
       title: "Add your Brand Kit once",
-      description: "Set your brand style and optional intro/outro cards for use in each video"
+      description: "Define your brand style and upload optional intro/outro cards for use in every video."
     },
     {
       icon: Calendar,
       title: "We generate your first Media Plan",
-      description: "including a brand and audience analysis  for free; subscribe to a paid plan to activate your Media Plan"
+      description: "Get a free brand and audience analysis; upgrade to a paid plan to unlock your full Media Plan."
     },
     {
       icon: CheckCircle,
       title: "Review the content calendar",
-      description: "enable auto-posting or preview summaries of scripts that will be used in upcoming videos"
+      description: "Preview upcoming video scripts or enable auto-posting for a hands-free experience."
     },
     {
       icon: Link,
-      title: "Short-form videos are auto generated",
-      description: "on/after scheduled posting days,  auto-post brands have videos with captions posted on their social accounts"
+      title: "Short-form videos auto-generate",
+      description: "On scheduled days, your branded videos with captions are created and posted to your accounts automatically."
     }
   ];
+  
 
   return (
     <section id="how-it-works" className="py-20 bg-muted/30">

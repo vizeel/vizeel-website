@@ -1,92 +1,28 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Play, Sparkles } from "lucide-react";
-import { useState } from "react";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import heroImage from "@/assets/hero-bg.jpg";
-import { supabase } from "@/lib/supabaseClient";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { executeRecaptcha } = useGoogleReCaptcha();
-
-  const handleGetStarted = async () => {
-    if (!email || !phone) {
-      alert("Please fill in both email and phone number.");
-      return;
-    }
-
-    if (!executeRecaptcha) {
-      alert("reCAPTCHA not ready. Please try again.");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    // Ensure Supabase is configured to avoid runtime errors
-    if (!supabase) {
-      alert(
-        "Signup temporarily unavailable. Supabase is not configured. Please add your Supabase URL and anon key in src/lib/supabaseClient.ts."
-      );
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      // Execute reCAPTCHA
-      const recaptchaToken = await executeRecaptcha("waitlist_submit");
-      
-      // Prepare payload
-      const formData = { email, phone, recaptchaToken };
-
-      // Insert into Supabase
-      const { error: insertError } = await supabase
-        .from("waitlist_signups")
-        .insert({
-          email,
-          phone,
-          recaptcha_token: recaptchaToken,
-          source: "hero_join_waitlist",
-        });
-
-      if (insertError) {
-        console.error("Supabase insert error:", insertError);
-        throw new Error("Could not save your signup. Please try again.");
-      }
-
-      console.log(
-        "Lead captured with reCAPTCHA and saved to Supabase:",
-        formData
-      );
-
-      // Optionally also send to your private server (reCAPTCHA verification, etc.)
-      // await fetch("https://your-server.example.com/api/waitlist", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(formData),
-      // });
-
-      alert("Thanks for your interest! We'll be in touch soon.");
-      setEmail("");
-      setPhone("");
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section 
       id="home-hero" 
-      className="hero relative min-h-screen flex items-center justify-center primary-bg"
-      // style={{ backgroundImage: `url(${heroImage})` }}
+      className="hero relative min-h-screen flex items-center justify-center primary-bg overflow-hidden"
     >
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/vizeel_hero_2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/40" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -110,39 +46,21 @@ const HeroSection = () => {
             We analyze, plan, and auto-generate on-brand reels —so you can focus on running your business.
           </p>
 
-          {/* Lead Capture Form */}
-          <div className="max-w-md mx-auto mb-8 space-y-4">
-            <Input
-              type="email"
-              placeholder="Enter your email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-background border-border text-foreground placeholder:text-muted-foreground h-12"
-            />
-            <Input
-              type="tel"
-              placeholder="Enter your phone number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="bg-background border-border text-foreground placeholder:text-muted-foreground h-12"
-            />
-          </div>
-
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
-              size="lg" 
-              onClick={handleGetStarted}
-              disabled={isSubmitting}
+              asChild
               className="btn-primary text-lg px-8 py-6 h-auto"
             >
-              <Play className="w-5 h-5 mr-2" />
-              {isSubmitting ? "Submitting..." : "Join waitlist"}
+              <Link to="/contact">
+                <Play className="w-5 h-5 mr-2" />
+                Join waitlist
+              </Link>
             </Button>
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground">
+          <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-success rounded-full animate-bounce-gentle" />
               <span>SSL Secured</span>

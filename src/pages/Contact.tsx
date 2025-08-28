@@ -8,19 +8,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Helmet } from "react-helmet-async";
 import { useToast } from "@/hooks/use-toast";
+import SubmitButton from "@/components/ui/SubmitButton";
 import { 
   Mail, 
   Clock, 
   Instagram, 
   Facebook, 
   Music, 
-  MapPin 
+  MapPin, 
+  MessageSquare
 } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     message: ""
   });
@@ -50,6 +53,7 @@ const Contact = () => {
     setFormData({
       name: "",
       email: "",
+      phone: "",
       company: "",
       message: ""
     });
@@ -100,11 +104,13 @@ const Contact = () => {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
+              <MessageSquare className="mx-auto h-12 w-12 text-primary mb-4" />
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-                We'd love to hear from you
+                We'd love to hear, 
+                <span className="text-primary">from you</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Use the form below or email support@vizeel.com.
+                Use the form below or email <span className="text-primary">vizeel.ai@gmail.com</span>
               </p>
             </div>
           </div>
@@ -122,7 +128,7 @@ const Contact = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form className="space-y-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
                       <Input
@@ -146,6 +152,26 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone *</Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => {
+                          // Only allow numerical characters
+                          const newPhone = e.target.value.replace(/\D/g, '');
+                          setFormData(prev => ({
+                            ...prev,
+                            phone: newPhone
+                          }));
+                        }}
+                        placeholder="Your phone number"
                       />
                     </div>
 
@@ -174,9 +200,25 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button type="submit" variant="accent" className="w-full">
+                    <SubmitButton
+                      formData={formData}
+                      validationRules={{ email: true, phone: true }}
+                      source="contact_form"
+                      successMessage="Message sent! We'll get back to you within 1 business day."
+                      onSuccess={(data) => {
+                        // Reset form on success
+                        setFormData({
+                          name: "",
+                          email: "",
+                          phone: "",
+                          company: "",
+                          message: ""
+                        });
+                      }}
+                      className="w-full"
+                    >
                       Send Message
-                    </Button>
+                    </SubmitButton>
                   </form>
                 </CardContent>
               </Card>
@@ -188,7 +230,7 @@ const Contact = () => {
               <Card className="border-border bg-card">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-accent" />
+                    <Clock className="w-5 h-5 text-primary" />
                     Support hours
                   </CardTitle>
                 </CardHeader>
@@ -202,13 +244,6 @@ const Contact = () => {
 
             </section>
           </div>
-        </div>
-
-        {/* Footer Microcopy */}
-        <div className="container mx-auto px-6 py-8">
-          <p className="text-center text-sm text-muted-foreground">
-            © 2025 Vizeel. All rights reserved.
-          </p>
         </div>
       </main>
       <Footer />
