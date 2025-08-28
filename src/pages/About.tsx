@@ -22,16 +22,16 @@ const About = () => {
     {
       name: "Megean Madden",
       role: "Co-Founder",
-      bio: "Serial entrepreneur with 20+ years in digital marketing and AI. Previously built and scaled multiple SaaS companies serving SMBs.",
+      bio: "Data-driven product leader with 16+ years driving customer outcomes (3 in product leadership, 7 in customer success leadership). After shipping AI-enabled features in MarTech, I’m building Vizeel to help small businesses reach new customers with weekly, on-brand short videos.",
       linkedin: "https://www.linkedin.com/in/megean/",
-      expertise: ["Product Strategy"]
+      expertise: ["Product Strategy", "Customer Success", "AI"]
     },
     {
       name: "Prem Randeria",
       role: "Co-Founder",
-      bio: "Seasoned technology leader with deep expertise in enterprise applications, video processing, automation, and most recently Agentic AI. Led high-performing engineering teams at major tech companies before shifting focus to scalable solutions for SMBs.",
+      bio: "seasoned technology leader with deep expertise in B2B enterprise applications, AI, and engineering leadership. After leading high-performing teams at major tech companies, I’m now focused on building scalable solutions that empower SMBs to grow and thrive.",
       linkedin: "https://www.linkedin.com/in/premranderia/",
-      expertise: ["AI & Machine Learning"]
+      expertise: ["AI & Machine Learning", "Engineering Leadership", "User Experience"]
     },
   ];
 
