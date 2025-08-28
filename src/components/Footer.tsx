@@ -23,7 +23,8 @@ const Footer = () => {
   const quickLinks = [
     { label: "How It Works", href: "/product" },
     { label: "Pricing", href: "/pricing" },
-    { label: "FAQ", href: "/faq" }
+    { label: "FAQ", href: "/faq" },
+    { label: "About", href: "/about" }
   ];
 
   const legalLinks = [
@@ -43,7 +44,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid lg:grid-cols-5 gap-12">
+          <div className="grid lg:grid-cols-4 gap-12">
             {/* Brand Section */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
@@ -113,36 +114,6 @@ const Footer = () => {
                     <link.icon className="w-5 h-5" />
                   </a>
                 ))}
-              </div>
-            </div>
-
-            {/* About Us */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-6">About Us</h4>
-              <div className="space-y-4">
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Founded by two experienced professionals who have worked together for 11 years, Vizeel is dedicated to helping small and medium businesses grow through AI-powered video content.
-                </p>
-                <div className="space-y-2">
-                  <a
-                    href="https://www.linkedin.com/in/founder1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                    <span>Founder 1</span>
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/founder2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                    <span>Founder 2</span>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
