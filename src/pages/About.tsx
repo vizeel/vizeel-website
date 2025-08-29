@@ -33,7 +33,7 @@ const About = () => {
       bio: "seasoned technology leader with deep expertise in B2B enterprise applications, AI, and engineering leadership. After leading high-performing teams at major tech companies, I’m now focused on building scalable solutions that empower SMBs to grow and thrive.",
       linkedin: "https://www.linkedin.com/in/premranderia/",
       expertise: ["AI & Machine Learning", "Engineering Leadership", "User Experience"],
-      image: "/prem.jpg"
+      image: "/prem.png"
     },
   ];
 
