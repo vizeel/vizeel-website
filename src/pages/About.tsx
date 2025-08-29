@@ -24,14 +24,16 @@ const About = () => {
       role: "Co-Founder",
       bio: "Data-driven product leader with 16+ years driving customer outcomes (3 in product leadership, 7 in customer success leadership). After shipping AI-enabled features in MarTech, I’m building Vizeel to help small businesses reach new customers with weekly, on-brand short videos.",
       linkedin: "https://www.linkedin.com/in/megean/",
-      expertise: ["Product Strategy", "Customer Success", "AI"]
+      expertise: ["Product Strategy", "Customer Success", "AI"],
+      image: "/meg.jpg"
     },
     {
       name: "Prem Randeria",
       role: "Co-Founder",
       bio: "seasoned technology leader with deep expertise in B2B enterprise applications, AI, and engineering leadership. After leading high-performing teams at major tech companies, I’m now focused on building scalable solutions that empower SMBs to grow and thrive.",
       linkedin: "https://www.linkedin.com/in/premranderia/",
-      expertise: ["AI & Machine Learning", "Engineering Leadership", "User Experience"]
+      expertise: ["AI & Machine Learning", "Engineering Leadership", "User Experience"],
+      image: "/prem.jpg"
     },
   ];
 
@@ -166,7 +168,7 @@ const About = () => {
                   <Card key={index} className="border-border bg-card hover:shadow-lg transition-shadow duration-300">
                     <CardHeader className="text-center pb-4">
                       <div className="w-16 h-16 bg-gradient-primary rounded-full mx-auto mb-4 flex items-center justify-center">
-                        <Users className="w-8 h-8 text-white" />
+                        <img src={founder.image} alt={founder.name} className="w-full h-full object-cover rounded-full" />
                       </div>
                       <CardTitle className="text-xl font-bold text-foreground">
                         {founder.name}
