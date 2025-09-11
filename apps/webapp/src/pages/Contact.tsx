@@ -18,8 +18,11 @@ import {
   MapPin, 
   MessageSquare
 } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -214,6 +217,8 @@ const Contact = () => {
                           company: "",
                           message: ""
                         });
+                        // Navigate to home page
+                        navigate("/");
                       }}
                       className="w-full"
                     >
