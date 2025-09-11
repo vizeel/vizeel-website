@@ -7,17 +7,15 @@ async function bootstrap() {
   // Enable CORS for frontend communication
   const corsOrigins = process.env.CORS_ORIGINS
     ? process.env.CORS_ORIGINS.split(',')
-    : ['http://0.0.0.0:8080'];
+    : ['http://0.0.0.0:8081', 'http://localhost:8081'];
 
   app.enableCors({
     origin: corsOrigins,
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   const port = process.env.PORT || 4001;
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
   console.log(`🚀 Vizeel API Server is running on: http://localhost:${port}`);
 }
 bootstrap();
