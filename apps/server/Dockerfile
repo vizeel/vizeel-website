@@ -33,9 +33,6 @@
     RUN pnpm install --prod --frozen-lockfile
     
     # Verify the required files exist
-    RUN test -f /app/packages/backend-shared/schemas/dist/index.js || (echo "FATAL: schemas/dist/index.js not found" && exit 1)
-    RUN test -f /app/packages/backend-shared/config/dist/index.js || (echo "FATAL: config/dist/index.js not found" && exit 1)
-    RUN test -f /app/packages/backend-shared/utils/dist/index.js || (echo "FATAL: utils/dist/index.js not found" && exit 1)
     RUN test -f /app/apps/server/dist/src/main.js || (echo "FATAL: server/dist/src/main.js not found" && exit 1)
     
     # Set working directory to the app

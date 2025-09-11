@@ -11,7 +11,6 @@ ENV VITE_API_URL=$VITE_API_URL
 # Copy monorepo setup files
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
 COPY apps/webapp/package.json ./apps/webapp/
-COPY packages/ ./packages/
 
 # Install pnpm
 RUN npm install -g pnpm
