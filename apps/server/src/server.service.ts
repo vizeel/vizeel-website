@@ -3,12 +3,16 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { WaitlistSignup } from './schemas/waitlist-signup.schema';
 import { CreateWaitlistSignupDto } from './dto/create-waitlist-signup.dto';
+import { BlogPost } from './schemas/blog-post.schema';
+import { CreateBlogPostDto, UpdateBlogPostDto } from './dto/create-blog-post.dto';
 
 @Injectable()
 export class ServerService {
   constructor(
     @InjectModel(WaitlistSignup.name)
     private waitlistSignupModel: Model<WaitlistSignup>,
+    @InjectModel(BlogPost.name)
+    private blogPostModel: Model<BlogPost>,
   ) {}
   getHealth(): { status: string; message: string } {
     return {
@@ -63,5 +67,43 @@ export class ServerService {
 
   async deleteWaitlistSignup(id: string): Promise<void> {
     await this.waitlistSignupModel.findByIdAndDelete(id).exec();
+  }
+
+  // Blog Post CRUD operations
+  async createBlogPost(createBlogPostDto: CreateBlogPostDto): Promise<BlogPost> {
+    const createdBlogPost = new this.blogPostModel(createBlogPostDto);
+    return createdBlogPost.save();
+  }
+
+  async getAllBlogPosts(): Promise<BlogPost[]> {
+    return this.blogPostModel.find().sort({ createdAt: -1 }).exec();
+  }
+
+  async getPublishedBlogPosts(): Promise<BlogPost[]> {
+    return this.blogPostModel
+      .find({ published: true })
+      .sort({ published_at: -1, createdAt: -1 })
+      .exec();
+  }
+
+  async getBlogPostBySlug(slug: string): Promise<BlogPost> {
+    return this.blogPostModel.findOne({ slug, published: true }).exec();
+  }
+
+  async getBlogPostById(id: string): Promise<BlogPost> {
+    return this.blogPostModel.findById(id).exec();
+  }
+
+  async updateBlogPost(
+    id: string,
+    updateBlogPostDto: UpdateBlogPostDto,
+  ): Promise<BlogPost> {
+    return this.blogPostModel
+      .findByIdAndUpdate(id, updateBlogPostDto, { new: true })
+      .exec();
+  }
+
+  async deleteBlogPost(id: string): Promise<void> {
+    await this.blogPostModel.findByIdAndDelete(id).exec();
   }
 }

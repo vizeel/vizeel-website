@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ServerController } from './server.controller';
 import { ServerService } from './server.service';
 import { WaitlistSignup, WaitlistSignupSchema } from './schemas/waitlist-signup.schema';
+import { BlogPost, BlogPostSchema } from './schemas/blog-post.schema';
 
 @Module({
   imports: [
@@ -17,7 +18,10 @@ import { WaitlistSignup, WaitlistSignupSchema } from './schemas/waitlist-signup.
       }),
       inject: [ConfigService],
     }),
-    MongooseModule.forFeature([{ name: WaitlistSignup.name, schema: WaitlistSignupSchema }]),
+    MongooseModule.forFeature([
+      { name: WaitlistSignup.name, schema: WaitlistSignupSchema },
+      { name: BlogPost.name, schema: BlogPostSchema },
+    ]),
   ],
   controllers: [ServerController],
   providers: [ServerService],

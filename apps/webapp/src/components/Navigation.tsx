@@ -15,6 +15,7 @@ const Navigation = () => {
     { label: "Product", href: "/product" },
     { label: "Pricing", href: "/pricing" },
     { label: "Affiliates", href: "/affiliates" },
+    { label: "Blog", href: "/blog" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

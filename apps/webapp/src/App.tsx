@@ -9,6 +9,8 @@ import Index from "./pages/Index";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import Affiliates from "./pages/Affiliates";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -33,6 +35,8 @@ const App = () => (
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/price" element={<Navigate to="/pricing" replace />} />
               <Route path="/affiliates" element={<Affiliates />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />

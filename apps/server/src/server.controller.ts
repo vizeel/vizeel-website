@@ -10,6 +10,7 @@ import {
   UnauthorizedException
 } from '@nestjs/common';
 import { CreateWaitlistSignupDto } from './dto/create-waitlist-signup.dto';
+import { CreateBlogPostDto, UpdateBlogPostDto } from './dto/create-blog-post.dto';
 import { ServerService } from './server.service';
 
 @Controller('api')
@@ -63,6 +64,61 @@ export class ServerController {
   ) {
     this.validateAdminToken(authorization);
     return this.serverService.deleteWaitlistSignup(id);
+  }
+
+  // Public Blog endpoints
+  @Get('blog')
+  async getPublishedBlogPosts() {
+    return this.serverService.getPublishedBlogPosts();
+  }
+
+  @Get('blog/:slug')
+  async getBlogPostBySlug(@Param('slug') slug: string) {
+    return this.serverService.getBlogPostBySlug(slug);
+  }
+
+  // Admin Blog endpoints
+  @Get('admin/blog')
+  async getAllBlogPosts(@Headers('authorization') authorization: string) {
+    this.validateAdminToken(authorization);
+    return this.serverService.getAllBlogPosts();
+  }
+
+  @Get('admin/blog/:id')
+  async getBlogPostById(
+    @Param('id') id: string,
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    return this.serverService.getBlogPostById(id);
+  }
+
+  @Post('admin/blog')
+  async createBlogPost(
+    @Body() createBlogPostDto: CreateBlogPostDto,
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    return this.serverService.createBlogPost(createBlogPostDto);
+  }
+
+  @Put('admin/blog/:id')
+  async updateBlogPost(
+    @Param('id') id: string,
+    @Body() updateBlogPostDto: UpdateBlogPostDto,
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    return this.serverService.updateBlogPost(id, updateBlogPostDto);
+  }
+
+  @Delete('admin/blog/:id')
+  async deleteBlogPost(
+    @Param('id') id: string,
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    return this.serverService.deleteBlogPost(id);
   }
 
   private validateAdminToken(authorization: string) {
