@@ -14,6 +14,7 @@ const Navigation = () => {
     { label: "Home", href: "/" },
     { label: "Product", href: "/product" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Affiliates", href: "/affiliates" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

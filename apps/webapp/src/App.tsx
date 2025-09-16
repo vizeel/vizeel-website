@@ -8,6 +8,7 @@ import { ReCaptchaProvider } from "@/components/ReCaptchaProvider";
 import Index from "./pages/Index";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
+import Affiliates from "./pages/Affiliates";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/product" element={<Product />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/price" element={<Navigate to="/pricing" replace />} />
+              <Route path="/affiliates" element={<Affiliates />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
