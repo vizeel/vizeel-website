@@ -1,73 +1,116 @@
-# Welcome to your Lovable project
+# Vizeel Monorepo
 
-## Project info
+A monorepo containing the Vizeel webapp and NestJS API server.
 
-**URL**: https://lovable.dev/projects/776b01c5-c2df-4da7-a8ca-40a1cd2c586a
+## Project Structure
 
-## How can I edit this code?
+```
+vizeel-monorepo/
+├── apps/
+│   ├── webapp/          # React frontend application
+│   └── server/          # NestJS API server
+├── package.json         # Root package.json with workspace config
+├── nest-cli.json        # NestJS CLI configuration
+└── tsconfig.json        # Root TypeScript config
+```
 
-There are several ways of editing your application.
+## Prerequisites
 
-**Use Lovable**
+- Node.js >= 18.0.0
+- npm >= 9.0.0
+- MongoDB (for the server)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/776b01c5-c2df-4da7-a8ca-40a1cd2c586a) and start prompting.
+## Setup
 
-Changes made via Lovable will be committed automatically to this repo.
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-**Use your preferred IDE**
+2. **Setup environment variables:**
+   ```bash
+   cp apps/server/.env.example apps/server/.env
+   ```
+   
+   Update the `.env` file with your MongoDB connection string and other configuration.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Development
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Run both applications concurrently:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Run applications individually:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Frontend only:**
+```bash
+npm run dev:webapp
+```
 
-**Use GitHub Codespaces**
+**Backend only:**
+```bash
+npm run dev:server
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Building
 
-## What technologies are used for this project?
+### Build both applications:
+```bash
+npm run build
+```
 
-This project is built with:
+### Build individually:
 
-- Vite
+**Frontend:**
+```bash
+npm run build:webapp
+```
+
+**Backend:**
+```bash
+npm run build:server
+```
+
+## Production
+
+### Start the server:
+```bash
+npm run start:server
+```
+
+The webapp build files are static and can be served from any static file server.
+
+## API Endpoints
+
+The server runs on `http://localhost:4001` by default and provides:
+
+- `GET /api/health` - Health check endpoint
+- `GET /api` - Basic hello endpoint
+
+## Technologies
+
+### Frontend (webapp)
+- React 18
 - TypeScript
-- React
-- shadcn-ui
+- Vite
 - Tailwind CSS
+- ShadCN/UI components
+- React Router
+- React Query
 
-## How can I deploy this project?
+### Backend (server)
+- NestJS
+- TypeScript
+- MongoDB with Mongoose
+- Express (via NestJS)
 
-Simply open [Lovable](https://lovable.dev/projects/776b01c5-c2df-4da7-a8ca-40a1cd2c586a) and click on Share -> Publish.
+## Environment Variables
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Server (.env)
+```
+MONGODB_URI=mongodb://localhost:27017/vizeel
+PORT=4001
+FRONTEND_URL=http://localhost:8080
+NODE_ENV=development
+```
