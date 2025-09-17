@@ -20,17 +20,19 @@ const Footer = () => {
     { icon: Linkedin, href: "https://www.linkedin.com/company/vizeel/", label: "LinkedIn" }
   ];
 
-  const quickLinks = [
-    { label: "How It Works", href: "/product" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "FAQ", href: "/faq" },
-    { label: "About", href: "/about" }
-  ];
+
 
   const legalLinks = [
     { label: "Terms of Service", href: "/terms", icon: FileText },
     { label: "Privacy Policy", href: "/privacy", icon: Shield }
   ];
+
+  const quickLinks = [
+    { label: "How It Works", href: "/product" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "FAQ", href: "/faq" },
+    { label: "About", href: "/about" }
+  ].concat(legalLinks);
 
   const trustBadges = [
     "SSL Secured",
