@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Helmet } from "react-helmet-async";
 import { Calendar, User, ArrowLeft, Share2 } from "lucide-react";
+import SvgIcon from "@/components/SvgIcon";
+import 'react-quill/dist/quill.snow.css';
 
 interface BlogPost {
   _id: string;
@@ -14,7 +16,11 @@ interface BlogPost {
   content: string;
   excerpt?: string;
   author: string;
-  featured_image?: string;
+  featured_image?: {
+    url: string;
+    key: string;
+    uploadedAt: string;
+  };
   published: boolean;
   tags?: string[];
   meta_title?: string;
@@ -140,7 +146,7 @@ const BlogPost = () => {
         <meta property="og:description" content={post.excerpt || `Read about ${post.title} on the Vizeel blog.`} />
         <meta property="og:url" content={`https://vizeel.com/blog/${post.slug}`} />
         <meta property="og:type" content="article" />
-        {post.featured_image && <meta property="og:image" content={post.featured_image} />}
+        {post.featured_image && <meta property="og:image" content={post.featured_image.url} />}
         <meta property="article:author" content={post.author} />
         <meta property="article:published_time" content={post.published_at || post.createdAt} />
         {post.tags && post.tags.map(tag => (
@@ -151,7 +157,7 @@ const BlogPost = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || `Read about ${post.title} on the Vizeel blog.`} />
-        {post.featured_image && <meta name="twitter:image" content={post.featured_image} />}
+        {post.featured_image && <meta name="twitter:image" content={post.featured_image.url} />}
 
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -172,7 +178,7 @@ const BlogPost = () => {
             "datePublished": post.published_at || post.createdAt,
             "dateModified": post.updatedAt,
             "url": `https://vizeel.com/blog/${post.slug}`,
-            "image": post.featured_image,
+            "image": post.featured_image?.url,
             "keywords": post.tags?.join(', ')
           })}
         </script>
@@ -192,21 +198,35 @@ const BlogPost = () => {
         </section>
 
         {/* Featured Image */}
-        {post.featured_image && (
-          <section>
-            <div className="container mx-auto px-6">
-              <div className="max-w-4xl mx-auto">
-                <div className="aspect-video overflow-hidden rounded-lg mb-8">
+        <section>
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="aspect-video overflow-hidden rounded-lg mb-8 flex items-center justify-center bg-muted/20">
+                {post.featured_image ? (
                   <img 
-                    src={post.featured_image} 
+                    src={post.featured_image.url} 
                     alt={post.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                ) : null}
+                <div style={{ display: post.featured_image ? 'none' : 'flex' }} className="w-full h-full items-center justify-center">
+                  <SvgIcon 
+                    src="/logo.svg" 
+                    alt="Logo" 
+                    width={120} 
+                    height={120}
+                    className="object-contain logo-fill"
+                    backgroundColor="transparent"
                   />
                 </div>
               </div>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* Article Content */}
         <article className="pb-16">
@@ -253,10 +273,56 @@ const BlogPost = () => {
               </header>
 
               {/* Article Body */}
-              <div 
-                className="prose prose-lg max-w-none text-foreground prose-headings:text-foreground prose-a:text-primary prose-strong:text-foreground prose-code:text-foreground prose-pre:bg-muted"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
+              <div>
+                <style dangerouslySetInnerHTML={{
+                  __html: `
+                    .blog-content ul {
+                      list-style-type: disc;
+                      padding-left: 1.5rem;
+                      margin: 1rem 0;
+                    }
+                    .blog-content ol {
+                      list-style-type: decimal;
+                      padding-left: 1.5rem;
+                      margin: 1rem 0;
+                    }
+                    .blog-content li {
+                      margin: 0.5rem 0;
+                      padding-left: 0.25rem;
+                    }
+                    .blog-content .ql-indent-1 {
+                      padding-left: 2rem;
+                    }
+                    .blog-content .ql-indent-2 {
+                      padding-left: 3rem;
+                    }
+                    .blog-content .ql-indent-3 {
+                      padding-left: 4rem;
+                    }
+                    .blog-content p {
+                      margin: 1rem 0;
+                      line-height: 1.7;
+                    }
+                    .blog-content strong {
+                      font-weight: 600;
+                    }
+                    .blog-content em {
+                      font-style: italic;
+                    }
+                    .blog-content a {
+                      color: hsl(var(--primary));
+                      text-decoration: underline;
+                    }
+                    .blog-content a:hover {
+                      text-decoration: none;
+                    }
+                  `
+                }} />
+                <div 
+                  className="blog-content prose prose-lg max-w-none text-foreground prose-headings:text-foreground prose-a:text-primary prose-strong:text-foreground prose-code:text-foreground prose-pre:bg-muted"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
+                />
+              </div>
             </div>
           </div>
         </article>

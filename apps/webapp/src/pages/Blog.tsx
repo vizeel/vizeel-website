@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Helmet } from "react-helmet-async";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
+import SvgIcon from "@/components/SvgIcon";
 
 interface BlogPost {
   _id: string;
@@ -15,7 +16,11 @@ interface BlogPost {
   content: string;
   excerpt?: string;
   author: string;
-  featured_image?: string;
+  featured_image?: {
+    url: string;
+    key: string;
+    uploadedAt: string;
+  };
   published: boolean;
   tags?: string[];
   meta_title?: string;
@@ -160,15 +165,29 @@ const Blog = () => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {posts.map((post) => (
                     <Card key={post._id} className="border-border bg-card hover:shadow-lg transition-shadow duration-300 group">
-                      {post.featured_image && (
-                        <div className="aspect-video overflow-hidden rounded-t-lg">
+                      <div className="aspect-video overflow-hidden rounded-t-lg flex items-center justify-center bg-muted/20">
+                        {post.featured_image ? (
                           <img 
-                            src={post.featured_image} 
+                            src={post.featured_image.url} 
                             alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                              e.currentTarget.nextElementSibling.style.display = 'flex';
+                            }}
+                          />
+                        ) : null}
+                        <div style={{ display: post.featured_image ? 'none' : 'flex' }} className="w-full h-full items-center justify-center">
+                          <SvgIcon 
+                            src="/logo.svg" 
+                            alt="Logo" 
+                            width={80} 
+                            height={80}
+                            className="object-contain logo-fill"
+                            backgroundColor="transparent"
                           />
                         </div>
-                      )}
+                      </div>
                       <CardHeader className="pb-4">
                         <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                           <div className="flex items-center gap-1">

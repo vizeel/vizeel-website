@@ -18,8 +18,18 @@ export class BlogPost extends Document {
   @Prop()
   author: string;
 
-  @Prop()
-  featured_image?: string;
+  @Prop({
+    type: {
+      url: String,
+      key: String,
+      uploadedAt: { type: Date, default: Date.now }
+    }
+  })
+  featured_image?: {
+    url: string;
+    key: string;
+    uploadedAt: Date;
+  };
 
   @Prop({ default: false })
   published: boolean;

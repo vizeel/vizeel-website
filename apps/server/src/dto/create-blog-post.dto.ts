@@ -4,7 +4,11 @@ export class CreateBlogPostDto {
   content: string;
   excerpt?: string;
   author: string;
-  featured_image?: string;
+  featured_image?: {
+    url: string;
+    key: string;
+    uploadedAt: Date;
+  };
   published?: boolean;
   tags?: string[];
   meta_title?: string;
@@ -18,7 +22,11 @@ export class UpdateBlogPostDto {
   content?: string;
   excerpt?: string;
   author?: string;
-  featured_image?: string;
+  featured_image?: {
+    url: string;
+    key: string;
+    uploadedAt: Date;
+  };
   published?: boolean;
   tags?: string[];
   meta_title?: string;

@@ -10,6 +10,7 @@ import { Switch } from '@/components/ui/switch';
 import { toast } from 'sonner';
 import { Plus, Edit, Trash2 } from 'lucide-react';
 import RichTextEditor from '@/components/RichTextEditor';
+import ImageUpload from '@/components/ImageUpload';
 
 interface BlogPost {
   _id: string;
@@ -18,7 +19,11 @@ interface BlogPost {
   content: string;
   excerpt?: string;
   author: string;
-  featured_image?: string;
+  featured_image?: {
+    url: string;
+    key: string;
+    uploadedAt: string;
+  };
   published: boolean;
   tags?: string[];
   meta_title?: string;
@@ -40,7 +45,7 @@ const BlogPost = () => {
     content: '',
     excerpt: '',
     author: '',
-    featured_image: '',
+    featured_image: null as { url: string; key: string; uploadedAt: Date } | null,
     published: false,
     tags: '',
     meta_title: '',
@@ -92,7 +97,7 @@ const BlogPost = () => {
       content: '',
       excerpt: '',
       author: '',
-      featured_image: '',
+      featured_image: null,
       published: false,
       tags: '',
       meta_title: '',
@@ -158,7 +163,10 @@ const BlogPost = () => {
       content: post.content,
       excerpt: post.excerpt || '',
       author: post.author,
-      featured_image: post.featured_image || '',
+      featured_image: post.featured_image ? {
+        ...post.featured_image,
+        uploadedAt: new Date(post.featured_image.uploadedAt)
+      } : null,
       published: post.published,
       tags: post.tags ? post.tags.join(', ') : '',
       meta_title: post.meta_title || '',
@@ -291,25 +299,26 @@ const BlogPost = () => {
                     <Label htmlFor="content" className="text-right pt-2">
                       Content *
                     </Label>
-                    <div className="col-span-3">
+                    <div className="col-span-3 mb-6">
                       <RichTextEditor
                         value={blogFormData.content}
                         onChange={(value) => setBlogFormData({...blogFormData, content: value})}
                         placeholder="Write your blog post content here..."
-                        className="w-full"
+                        className="w-full mb-4"
                       />
                     </div>
                   </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="featured_image" className="text-right">
-                      Featured Image URL
+                  <div className="grid grid-cols-4 items-start gap-4">
+                    <Label className="text-right pt-2">
+                      Featured Image
                     </Label>
-                    <Input
-                      id="featured_image"
-                      value={blogFormData.featured_image}
-                      onChange={(e) => setBlogFormData({...blogFormData, featured_image: e.target.value})}
-                      className="col-span-3"
-                    />
+                    <div className="col-span-3">
+                      <ImageUpload
+                        value={blogFormData.featured_image}
+                        onChange={(imageData) => setBlogFormData({...blogFormData, featured_image: imageData})}
+                        label=""
+                      />
+                    </div>
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="tags" className="text-right">

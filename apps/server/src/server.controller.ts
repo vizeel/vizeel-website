@@ -8,20 +8,27 @@ import {
   Post,
   Put,
   UnauthorizedException,
-  Res
+  Res,
+  UploadedFile,
+  UseInterceptors,
+  BadRequestException
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { memoryStorage } from 'multer';
 import { Response } from 'express';
 import { CreateWaitlistSignupDto } from './dto/create-waitlist-signup.dto';
 import { CreateBlogPostDto, UpdateBlogPostDto } from './dto/create-blog-post.dto';
 import { GooglePlacesSearchDto } from './dto/places-search.dto';
 import { ServerService } from './server.service';
 import { GooglePlacesService } from './services/google-places.service';
+import { S3UploadService } from './services/s3-upload.service';
 
 @Controller('api')
 export class ServerController {
   constructor(
     private readonly serverService: ServerService,
     private readonly googlePlacesService: GooglePlacesService,
+    private readonly s3UploadService: S3UploadService,
   ) {}
 
   @Get('health')
@@ -126,6 +133,44 @@ export class ServerController {
   ) {
     this.validateAdminToken(authorization);
     return this.serverService.deleteBlogPost(id);
+  }
+
+  @Post('admin/blog/upload-image')
+  @UseInterceptors(FileInterceptor('image', {
+    storage: memoryStorage(),
+    limits: {
+      fileSize: 5 * 1024 * 1024, // 5MB limit
+    },
+  }))
+  async uploadBlogImage(
+    @UploadedFile() file: Express.Multer.File,
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+
+    if (!file) {
+      throw new BadRequestException('No file uploaded');
+    }
+
+    const validation = this.s3UploadService.validateImageFile(file);
+    if (!validation.valid) {
+      throw new BadRequestException(validation.error);
+    }
+
+    try {
+      const result = await this.s3UploadService.uploadImage(file, 'blog-images');
+      return {
+        success: true,
+        data: {
+          url: result.url,
+          key: result.key,
+          uploadedAt: new Date(),
+        }
+      };
+    } catch (error) {
+      console.error('Failed to upload image to S3', error);
+      throw new BadRequestException('Failed to upload image to S3');
+    }
   }
 
   // Google Places API endpoints
