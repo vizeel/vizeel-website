@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .turbo
+# Local env files
+.env.*
+.env
+apps/server/.env
