@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ServerController } from './server.controller';
 import { ServerService } from './server.service';
+import { GooglePlacesService } from './services/google-places.service';
 import { WaitlistSignup, WaitlistSignupSchema } from './schemas/waitlist-signup.schema';
 import { BlogPost, BlogPostSchema } from './schemas/blog-post.schema';
 
@@ -24,6 +25,6 @@ import { BlogPost, BlogPostSchema } from './schemas/blog-post.schema';
     ]),
   ],
   controllers: [ServerController],
-  providers: [ServerService],
+  providers: [ServerService, GooglePlacesService],
 })
 export class ServerModule {}

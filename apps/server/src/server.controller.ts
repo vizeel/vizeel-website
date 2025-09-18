@@ -7,15 +7,22 @@ import {
   Param,
   Post,
   Put,
-  UnauthorizedException
+  UnauthorizedException,
+  Res
 } from '@nestjs/common';
+import { Response } from 'express';
 import { CreateWaitlistSignupDto } from './dto/create-waitlist-signup.dto';
 import { CreateBlogPostDto, UpdateBlogPostDto } from './dto/create-blog-post.dto';
+import { GooglePlacesSearchDto } from './dto/places-search.dto';
 import { ServerService } from './server.service';
+import { GooglePlacesService } from './services/google-places.service';
 
 @Controller('api')
 export class ServerController {
-  constructor(private readonly serverService: ServerService) {}
+  constructor(
+    private readonly serverService: ServerService,
+    private readonly googlePlacesService: GooglePlacesService,
+  ) {}
 
   @Get('health')
   getHealth(): { status: string; message: string } {
@@ -119,6 +126,83 @@ export class ServerController {
   ) {
     this.validateAdminToken(authorization);
     return this.serverService.deleteBlogPost(id);
+  }
+
+  // Google Places API endpoints
+  @Post('admin/places/search')
+  async searchPlaces(
+    @Body() placesSearchDto: GooglePlacesSearchDto,
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    return this.googlePlacesService.searchPlaces(placesSearchDto);
+  }
+
+  @Get('admin/places/:placeId')
+  async getPlaceDetails(
+    @Param('placeId') placeId: string,
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    return this.googlePlacesService.getPlaceDetails(placeId);
+  }
+
+  @Post('admin/places/nearby')
+  async searchNearby(
+    @Body() nearbySearchDto: { 
+      location: { latitude: number; longitude: number }; 
+      radius: number; 
+      type?: string; 
+    },
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    return this.googlePlacesService.searchNearby(
+      nearbySearchDto.location, 
+      nearbySearchDto.radius, 
+      nearbySearchDto.type
+    );
+  }
+
+  @Post('admin/places/load-more')
+  async loadMorePlaces(
+    @Body() loadMoreDto: { 
+      textQuery: string; 
+      regionCode?: string; 
+      pageToken: string; 
+    },
+    @Headers('authorization') authorization: string,
+  ) {
+    this.validateAdminToken(authorization);
+    
+    // Add 2-second delay as required by Google Places API
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    return this.googlePlacesService.searchPlaces({
+      textQuery: loadMoreDto.textQuery,
+      regionCode: loadMoreDto.regionCode,
+      pageToken: loadMoreDto.pageToken,
+      maxResultCount: 20,
+    });
+  }
+
+  @Post('admin/places/export/csv')
+  async exportPlacesToCsv(
+    @Body() exportDto: { places: any[] },
+    @Headers('authorization') authorization: string,
+    @Res() res: Response,
+  ) {
+    this.validateAdminToken(authorization);
+    
+    try {
+      const csvContent = this.googlePlacesService.exportToCsv(exportDto.places);
+      
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', `attachment; filename="places-search-${Date.now()}.csv"`);
+      res.send(csvContent);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to export CSV' });
+    }
   }
 
   private validateAdminToken(authorization: string) {
