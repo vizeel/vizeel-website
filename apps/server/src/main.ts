@@ -1,8 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { ServerModule } from './server.module';
+import * as express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(ServerModule);
+
+  // Configure body parser for large payloads (CSV export)
+  app.use(express.json({ limit: '50mb' }));
+  app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
   // Enable CORS for frontend communication
   const corsOrigins = process.env.CORS_ORIGINS
