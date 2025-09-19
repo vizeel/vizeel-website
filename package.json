@@ -13,7 +13,8 @@
     "build": "turbo run build",
     "build:webapp": "npm run build --workspace=apps/webapp",
     "build:server": "npm run build --workspace=apps/server",
-    "start:server": "npm run start:prod --workspace=apps/server"
+    "start:server": "npm run start:prod --workspace=apps/server",
+    "tsc": "tsc"
   },
   "packageManager": "pnpm@9.0.0",
   "devDependencies": {

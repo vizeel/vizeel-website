@@ -1,9 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Helmet } from "react-helmet-async";
 import { Check, Video, Zap, Crown, HelpCircle, CheckCircle, AlertCircle } from "lucide-react";
 
 const Pricing = () => {
@@ -153,37 +153,15 @@ const Pricing = () => {
 
   return (
     <>
+      <SEO
+        title="Pricing Plans - AI Video Creation Software"
+        description="Simple monthly plans for AI-powered short videos that create themselves. Entry, Pro, and Enterprise plans starting at $75/month. Get automated video content for social media."
+        keywords="pricing plans, ai video software cost, video creation subscription, social media content pricing, automated video plans, vizeel pricing"
+        url="https://vizeel.com/pricing"
+        image="https://vizeel.com/og/vizeel-pricing.png"
+        structuredData={structuredData}
+      />
       <Navigation />
-      <Helmet>
-        <title>Pricing – Vizeel</title>
-        <meta 
-          name="description" 
-          content="Simple monthly plans for AI short videos that post themselves." 
-        />
-        <meta 
-          name="keywords" 
-          content="pricing, plans, ai video, short-form content" 
-        />
-        <link rel="canonical" href="https://vizeel.com/pricing" />
-        <meta name="robots" content="index,follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Pricing – Vizeel" />
-        <meta property="og:description" content="Simple monthly plans for AI short videos that post themselves." />
-        <meta property="og:url" content="https://vizeel.com/pricing" />
-        <meta property="og:image" content="/og/vizeel-pricing.png" />
-        <meta property="og:type" content="website" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Pricing – Vizeel" />
-        <meta name="twitter:description" content="Simple monthly plans for AI short videos that post themselves." />
-        <meta name="twitter:image" content="/og/vizeel-pricing.png" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
 
       <main className="min-h-screen bg-background">
         {/* Plan Comparison */}

@@ -1,9 +1,10 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Helmet } from "react-helmet-async";
 import {
   Video,
   Calendar,
@@ -86,39 +87,22 @@ const Product = () => {
 
   return (
     <>
+      <SEO
+        title="Product - AI-Powered Video Creation Platform"
+        description="Vizeel researches, plans, and generates short-form brand videos from your site, services, and reviews. AI-powered media planning and automated content creation. No prompts required."
+        keywords="vizeel product, ai video editor, automated video creation, social media content, reels, shorts, tiktok, content planning, brand videos"
+        url="https://vizeel.com/product"
+        image="https://vizeel.com/og/vizeel-product.png"
+        structuredData={structuredData}
+      />
       <Navigation />
-      <Helmet>
-        <title>Product — Vizeel</title>
-        <meta 
-          name="description" 
-          content="Vizeel researches, plans, and generates short-form brand videos from your site, services, and reviews. No prompts required." 
-        />
-        <meta 
-          name="keywords" 
-          content="vizeel, product, how it works, ai video editor, reels, shorts, tiktok" 
-        />
-        <link rel="canonical" href="https://vizeel.com/product" />
-        <meta name="robots" content="index,follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Product — Vizeel" />
-        <meta property="og:description" content="Vizeel researches, plans, and generates short-form brand videos from your site, services, and reviews. No prompts required." />
-        <meta property="og:url" content="https://vizeel.com/product" />
-        <meta property="og:image" content="/og/vizeel-product.png" />
-        <meta property="og:type" content="website" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Product — Vizeel" />
-        <meta name="twitter:description" content="Vizeel researches, plans, and generates short-form brand videos from your site, services, and reviews. No prompts required." />
-        <meta name="twitter:image" content="/og/vizeel-product.png" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
 
       <main className="min-h-screen bg-background">
+        {/* Breadcrumbs */}
+        <div className="container mx-auto px-6 pt-4">
+          <Breadcrumbs />
+        </div>
+        
         {/* Hero Section */}
         <section className="py-2 md:py-2">
           <div className="container mx-auto px-6">

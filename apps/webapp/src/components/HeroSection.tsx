@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Play, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import LazyVideo from "@/components/LazyVideo";
 
 const HeroSection = () => {
   return (
@@ -9,16 +10,16 @@ const HeroSection = () => {
       className="hero relative min-h-screen flex items-center justify-center primary-bg overflow-hidden"
     >
       {/* Background Video */}
-      <video
+      <LazyVideo
+        src="/vizeel_hero_2.mp4"
         autoPlay
         muted
         loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/vizeel_hero_2.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+        controls={false}
+        priority={true}
+        preload="auto"
+        className="absolute inset-0 w-full h-full"
+      />
       
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/40" />

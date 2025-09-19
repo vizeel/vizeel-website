@@ -28,13 +28,21 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav 
+      className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
+        <Link 
+          to="/" 
+          className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md"
+          aria-label="Vizeel home page"
+        >
         <SvgIcon 
           src="/logo.svg" 
-          alt="Logo" 
+          alt="Vizeel logo" 
           width={80} 
           height={80}
           className="object-contain logo-fill"
@@ -43,17 +51,19 @@ const Navigation = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8" role="list">
           {navigationItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-sm font-medium transition-colors hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-md px-2 py-1",
                 isActiveRoute(item.href)
                   ? "text-primary font-semibold"
                   : "text-foreground"
               )}
+              aria-current={isActiveRoute(item.href) ? "page" : undefined}
+              role="listitem"
             >
               {item.label}
             </Link>

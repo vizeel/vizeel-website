@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Helmet } from "react-helmet-async";
 import { useToast } from "@/hooks/use-toast";
 import SubmitButton from "@/components/ui/SubmitButton";
 import { 
@@ -78,29 +78,14 @@ const Contact = () => {
 
   return (
     <>
+      <SEO
+        title="Contact Us - Get in Touch with Vizeel"
+        description="Get in touch with the Vizeel team. Contact us for support, partnerships, or questions about our AI-powered video creation platform. We're here to help you succeed."
+        keywords="contact vizeel, customer support, video creation help, ai video support, get in touch"
+        url="https://vizeel.com/contact"
+        image="https://vizeel.com/og/vizeel-contact.png"
+      />
       <Navigation />
-      <Helmet>
-        <title>Contact – Vizeel</title>
-        <meta 
-          name="description" 
-          content="Get in touch with the Vizeel team." 
-        />
-        <link rel="canonical" href="https://vizeel.com/contact" />
-        <meta name="robots" content="index,follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Contact – Vizeel" />
-        <meta property="og:description" content="Get in touch with the Vizeel team." />
-        <meta property="og:url" content="https://vizeel.com/contact" />
-        <meta property="og:image" content="/og/vizeel-contact.png" />
-        <meta property="og:type" content="website" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact – Vizeel" />
-        <meta name="twitter:description" content="Get in touch with the Vizeel team." />
-        <meta name="twitter:image" content="/og/vizeel-contact.png" />
-      </Helmet>
 
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
