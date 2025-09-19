@@ -217,8 +217,8 @@ const Contact = () => {
                           company: "",
                           message: ""
                         });
-                        // Navigate to home page
-                        navigate("/");
+                        // Navigate to success page
+                        navigate("/contact/success");
                       }}
                       className="w-full"
                     >
