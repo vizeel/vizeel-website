@@ -5,6 +5,7 @@ import { WaitlistSignup } from './schemas/waitlist-signup.schema';
 import { CreateWaitlistSignupDto } from './dto/create-waitlist-signup.dto';
 import { BlogPost } from './schemas/blog-post.schema';
 import { CreateBlogPostDto, UpdateBlogPostDto } from './dto/create-blog-post.dto';
+import { SlackNotificationService } from './services/slack-notification.service';
 
 @Injectable()
 export class ServerService {
@@ -13,6 +14,7 @@ export class ServerService {
     private waitlistSignupModel: Model<WaitlistSignup>,
     @InjectModel(BlogPost.name)
     private blogPostModel: Model<BlogPost>,
+    private slackNotificationService: SlackNotificationService,
   ) {}
   getHealth(): { status: string; message: string } {
     return {
@@ -31,7 +33,24 @@ export class ServerService {
     const createdWaitlistSignup = new this.waitlistSignupModel(
       createWaitlistSignupDto,
     );
-    return createdWaitlistSignup.save();
+    const savedSignup = await createdWaitlistSignup.save();
+
+    // Send Slack notification
+    try {
+      await this.slackNotificationService.sendWaitlistNotification(
+        createWaitlistSignupDto.email,
+        createWaitlistSignupDto.name,
+        createWaitlistSignupDto.phone,
+        createWaitlistSignupDto.message,
+        createWaitlistSignupDto.company,
+        createWaitlistSignupDto.source,
+      );
+    } catch (error) {
+      console.error('Failed to send Slack notification for waitlist signup:', error);
+      // Don't fail the signup if Slack notification fails
+    }
+
+    return savedSignup;
   }
 
   async adminLogin(

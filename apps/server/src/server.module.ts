@@ -5,6 +5,7 @@ import { ServerController } from './server.controller';
 import { ServerService } from './server.service';
 import { GooglePlacesService } from './services/google-places.service';
 import { S3UploadService } from './services/s3-upload.service';
+import { SlackNotificationService } from './services/slack-notification.service';
 import { WaitlistSignup, WaitlistSignupSchema } from './schemas/waitlist-signup.schema';
 import { BlogPost, BlogPostSchema } from './schemas/blog-post.schema';
 
@@ -26,6 +27,6 @@ import { BlogPost, BlogPostSchema } from './schemas/blog-post.schema';
     ]),
   ],
   controllers: [ServerController],
-  providers: [ServerService, GooglePlacesService, S3UploadService],
+  providers: [ServerService, GooglePlacesService, S3UploadService, SlackNotificationService],
 })
 export class ServerModule {}

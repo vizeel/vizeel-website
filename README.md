@@ -113,4 +113,7 @@ MONGODB_URI=mongodb://localhost:27017/vizeel
 PORT=4001
 FRONTEND_URL=http://localhost:8080
 NODE_ENV=development
+
+# Slack Integration (optional)
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
 ```
