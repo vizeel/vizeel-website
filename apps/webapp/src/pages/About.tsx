@@ -30,7 +30,7 @@ const About = () => {
     {
       name: "Prem Randeria",
       role: "Co-Founder",
-      bio: "seasoned technology leader with deep expertise in B2B enterprise applications, AI, and engineering leadership. After leading high-performing teams at major tech companies, I’m now focused on building scalable solutions that empower SMBs to grow and thrive.",
+      bio: "Seasoned technology leader with deep expertise in B2B enterprise applications, AI, and engineering leadership. I’ve built and led high-performing teams at major tech companies, driving innovation and scaling complex platforms. Today, my focus is on building scalable, AI-driven solutions that empower SMBs to grow, compete, and thrive in an increasingly digital world.",
       linkedin: "https://www.linkedin.com/in/premranderia/",
       expertise: ["AI & Machine Learning", "Engineering Leadership", "User Experience"],
       image: "/prem.png"
