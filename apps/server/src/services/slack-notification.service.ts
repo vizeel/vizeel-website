@@ -15,7 +15,8 @@ export class SlackNotificationService {
     phone?: string,
     message?: string,
     company?: string,
-    source?: string
+    source?: string,
+    packageSelection?: string
   ): Promise<void> {
     if (!this.webhookUrl) {
       console.warn('SLACK_WEBHOOK_URL not configured. Skipping Slack notification.');
@@ -76,6 +77,70 @@ export class SlackNotificationService {
           text: `*Message:*\n${message}`
         }
       });
+    }
+
+    // Add package selection information if present
+    if (packageSelection) {
+      try {
+        const packageData = JSON.parse(packageSelection);
+        const packageFields = [];
+        
+        packageFields.push({
+          type: 'mrkdwn',
+          text: `*Agent:*\n${packageData.agent || 'N/A'}`
+        });
+        
+        packageFields.push({
+          type: 'mrkdwn',
+          text: `*Plan:*\n${packageData.plan || 'N/A'} - $${packageData.planPrice || 0}/month`
+        });
+
+        if (packageData.addOns && packageData.addOns.length > 0) {
+          const addOnsList = packageData.addOns.map((addon: any) => 
+            `• ${addon.name} - $${addon.price}${addon.type === 'Recurring' ? '/mo' : ''} (x${addon.quantity})`
+          ).join('\n');
+          
+          packageFields.push({
+            type: 'mrkdwn',
+            text: `*Add-ons:*\n${addOnsList}`
+          });
+        }
+
+        if (packageData.totals) {
+          let totalsText = `Monthly: $${packageData.totals.monthly}`;
+          if (packageData.totals.oneTime > 0) {
+            totalsText += `\nOne-time Setup: $${packageData.totals.oneTime}`;
+          }
+          
+          packageFields.push({
+            type: 'mrkdwn',
+            text: `*💰 Pricing:*\n${totalsText}`
+          });
+        }
+
+        blocks.push({
+          type: 'header',
+          text: {
+            type: 'plain_text',
+            text: '📦 Selected Package'
+          }
+        });
+
+        blocks.push({
+          type: 'section',
+          fields: packageFields
+        });
+
+      } catch (error) {
+        console.warn('Failed to parse package selection for Slack notification:', error);
+        blocks.push({
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `*Package Selection:*\nRaw data: ${packageSelection}`
+          }
+        });
+      }
     }
 
     blocks.push({

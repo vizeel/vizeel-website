@@ -21,6 +21,7 @@ interface WaitlistSignup {
   name?: string;
   recaptcha_token?: string;
   source?: string;
+  package_selection?: string;
   createdAt: string;
   updatedAt: string;
   is_contacted: boolean;
@@ -121,12 +122,29 @@ const WaitList = () => {
   const filteredSignups = useMemo(() => {
     if (!searchTerm) return signups;
     
-    return signups.filter(signup => 
-      signup.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (signup.phone && signup.phone.includes(searchTerm)) ||
-      (signup.source && signup.source.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (signup.name && signup.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
+    return signups.filter(signup => {
+      const basicMatch = 
+        signup.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (signup.phone && signup.phone.includes(searchTerm)) ||
+        (signup.source && signup.source.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (signup.name && signup.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      // Also search in package selection
+      if (signup.package_selection) {
+        try {
+          const packageData = JSON.parse(signup.package_selection);
+          const packageMatch = 
+            (packageData.agent && packageData.agent.toLowerCase().includes(searchTerm.toLowerCase())) ||
+            (packageData.plan && packageData.plan.toLowerCase().includes(searchTerm.toLowerCase()));
+          return basicMatch || packageMatch;
+        } catch (error) {
+          // If package_selection is not valid JSON, just use basic match
+          return basicMatch;
+        }
+      }
+      
+      return basicMatch;
+    });
   }, [signups, searchTerm]);
 
   const columnDefs: ColDef[] = [
@@ -202,6 +220,83 @@ const WaitList = () => {
           {params.value || 'N/A'}
         </Badge>
       ),
+    },
+    {
+      headerName: 'Package',
+      field: 'package_selection',
+      width: 400,
+      sortable: true,
+      filter: true,
+      cellRenderer: (params: ICellRendererParams) => {
+        if (!params.value) {
+          return <span className="text-gray-400 text-xs">No package</span>;
+        }
+        
+        try {
+          const packageData = JSON.parse(params.value);
+          
+          return (
+            <div className="space-y-2 p-2">
+              {/* Agent and Plan */}
+              <div className="border-b border-gray-200 pb-2">
+                <div className="text-xs font-semibold text-gray-900 mb-1">
+                  {packageData.agent || 'N/A'}
+                </div>
+                <div className="text-xs text-gray-700">
+                  <span className="font-medium">{packageData.plan || 'N/A'}</span> - ${packageData.planPrice || 0}/month
+                </div>
+              </div>
+
+              {/* Add-ons */}
+              {packageData.addOns && packageData.addOns.length > 0 && (
+                <div className="border-b border-gray-200 pb-2">
+                  <div className="text-xs font-medium text-gray-800 mb-1">Add-ons:</div>
+                  <div className="space-y-1">
+                    {packageData.addOns.slice(0, 3).map((addon: any, index: number) => (
+                      <div key={index} className="text-xs text-gray-600 flex justify-between">
+                        <span className="truncate mr-2">
+                          {addon.name} {addon.quantity > 1 ? `(${addon.quantity}x)` : ''}
+                        </span>
+                        <span className="whitespace-nowrap">
+                          ${addon.price * addon.quantity}{addon.type === 'Recurring' ? '/mo' : ''}
+                        </span>
+                      </div>
+                    ))}
+                    {packageData.addOns.length > 3 && (
+                      <div className="text-xs text-gray-500">
+                        +{packageData.addOns.length - 3} more...
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Totals */}
+              {packageData.totals && (
+                <div className="bg-gray-50 p-2 rounded">
+                  <div className="text-xs font-semibold text-green-700 flex justify-between">
+                    <span>Monthly Total:</span>
+                    <span>${packageData.totals.monthly}</span>
+                  </div>
+                  {packageData.totals.oneTime > 0 && (
+                    <div className="text-xs font-semibold text-orange-600 flex justify-between mt-1">
+                      <span>One-time Setup:</span>
+                      <span>${packageData.totals.oneTime}</span>
+                    </div>
+                  )}
+                  <div className="text-xs font-bold text-gray-900 flex justify-between mt-1 pt-1 border-t border-gray-300">
+                    <span>Total Value:</span>
+                    <span>${packageData.totals.monthly + (packageData.totals.oneTime || 0)}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        } catch (error) {
+          return <span className="text-red-400 text-xs">Invalid package data</span>;
+        }
+      },
+      autoHeight: true,
     },
     {
       headerName: 'Contacted',
@@ -324,7 +419,20 @@ const WaitList = () => {
               rowSelection="single"
               animateRows={true}
               suppressRowClickSelection={true}
-              rowHeight={60}
+              getRowHeight={(params) => {
+                // Increase height for rows with package data
+                if (params.data.package_selection) {
+                  try {
+                    const packageData = JSON.parse(params.data.package_selection);
+                    const addOnCount = packageData.addOns?.length || 0;
+                    // Base height + extra for add-ons (up to 3 shown) + totals section
+                    return 120 + (Math.min(addOnCount, 3) * 20) + 40;
+                  } catch (error) {
+                    return 80;
+                  }
+                }
+                return 80;
+              }}
               headerHeight={50}
             />
           </div>

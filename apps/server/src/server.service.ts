@@ -44,6 +44,7 @@ export class ServerService {
         createWaitlistSignupDto.message,
         createWaitlistSignupDto.company,
         createWaitlistSignupDto.source,
+        createWaitlistSignupDto.package_selection,
       );
     } catch (error) {
       console.error('Failed to send Slack notification for waitlist signup:', error);

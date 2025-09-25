@@ -26,6 +26,9 @@ export class WaitlistSignup extends Document {
 
   @Prop()
   name?: string;
+
+  @Prop()
+  package_selection?: string;
 }
 
 export const WaitlistSignupSchema = SchemaFactory.createForClass(WaitlistSignup);

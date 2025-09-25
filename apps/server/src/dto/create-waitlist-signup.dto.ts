@@ -6,4 +6,5 @@ export class CreateWaitlistSignupDto {
   company?: string;
   message?: string;
   name?: string;
+  package_selection?: string;
 }

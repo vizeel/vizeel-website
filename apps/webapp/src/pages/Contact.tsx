@@ -23,12 +23,17 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Contact = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  
+  // Get package selection from navigation state
+  const packageSelection = location.state?.packageSelection;
+  const source = location.state?.source || "contact_form";
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
-    message: ""
+    message: packageSelection ? `Hi! I'm interested in the ${packageSelection.agent} ${packageSelection.plan} plan${packageSelection.addOns.length > 0 ? ` with ${packageSelection.addOns.length} add-on service${packageSelection.addOns.length > 1 ? 's' : ''}` : ''}. Please get in touch to discuss next steps.` : ""
   });
   const { toast } = useToast();
 
@@ -116,6 +121,48 @@ const Contact = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
+                  {packageSelection && (
+                    <div className="mb-6 p-4 bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-lg">
+                      <h3 className="font-semibold text-foreground mb-2">Selected Package</h3>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Agent:</span>
+                          <span className="font-medium">{packageSelection.agent}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Plan:</span>
+                          <span className="font-medium">{packageSelection.plan} (${packageSelection.planPrice}/month)</span>
+                        </div>
+                        {packageSelection.addOns.length > 0 && (
+                          <>
+                            <div className="text-muted-foreground mt-2">Add-on Services:</div>
+                            {packageSelection.addOns.map((addon: any, index: number) => (
+                              <div key={index} className="flex justify-between ml-4">
+                                <span className="text-muted-foreground">
+                                  {addon.name} {addon.quantity > 1 ? `(${addon.quantity}x)` : ''}
+                                </span>
+                                <span className="font-medium">
+                                  ${addon.price * addon.quantity}{addon.type === 'Recurring' ? '/mo' : ''}
+                                </span>
+                              </div>
+                            ))}
+                          </>
+                        )}
+                        <hr className="my-2" />
+                        <div className="flex justify-between font-semibold">
+                          <span>Monthly Total:</span>
+                          <span>${packageSelection.totals.monthly}</span>
+                        </div>
+                        {packageSelection.totals.oneTime > 0 && (
+                          <div className="flex justify-between font-semibold text-orange-600">
+                            <span>One-time Setup:</span>
+                            <span>${packageSelection.totals.oneTime}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  
                   <form className="space-y-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
@@ -189,9 +236,12 @@ const Contact = () => {
                     </div>
 
                     <SubmitButton
-                      formData={formData}
+                      formData={{
+                        ...formData,
+                        package_selection: packageSelection ? JSON.stringify(packageSelection) : undefined
+                      }}
                       validationRules={{ email: true, phone: true }}
-                      source="contact_form"
+                      source={source}
                       successMessage="Message sent! We'll get back to you within 1 business day."
                       onSuccess={(data) => {
                         // Reset form on success

@@ -17,6 +17,8 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import FAQ from "./pages/FAQ";
 import About from "./pages/About";
+import SocialMediaMarketingAgent from "./pages/agents/SocialMediaMarketingAgent";
+import VideoStitchingAgent from "./pages/agents/VideoStitchingAgent";
 import AdminLayout from "./pages/admin/AdminLayout";
 import WaitList from "./pages/admin/WaitList";
 import AdminBlogPost from "./pages/admin/BlogPost";
@@ -38,6 +40,8 @@ const App = () => (
               <Route path="/product" element={<Product />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/price" element={<Navigate to="/pricing" replace />} />
+              <Route path="/agents/social-media-marketing" element={<SocialMediaMarketingAgent />} />
+              <Route path="/agents/video-stitching" element={<VideoStitchingAgent />} />
               <Route path="/affiliates" element={<Affiliates />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
